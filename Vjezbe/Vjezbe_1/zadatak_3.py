@@ -12,15 +12,15 @@ for i in range (4):
       print ("Pogrešan unos!")
 
 if v[0]==v[2]:
-  print (f"x={v[0]}")
+  print (f"x = {v[0]}")
 elif v[1]==v[3]:
-  print (f"y={v[1]}")
+  print (f"y = {v[1]}")
 else:
   K = round((v[3]-v[1])/(v[2]-v[0]), 2)
   N = round(v[3] - K*v[2], 2)
   if N < 0:
-    print (f"Jednadžba pravca u eksplicitnom obliku: y={K}x - {abs(N)}")
+    print (f"Jednadžba pravca u eksplicitnom obliku: y = {K}x - {abs(N)}")
   elif N > 0:
-    print (f"Jednadžba pravca u eksplicitnom obliku: y={K}x + {abs(N)}")
+    print (f"Jednadžba pravca u eksplicitnom obliku: y = {K}x + {abs(N)}")
   else:
-    print (f"Jednadžba pravca u eksplicitnom obliku: y={K}x")
+    print (f"Jednadžba pravca u eksplicitnom obliku: y = {K}x")
