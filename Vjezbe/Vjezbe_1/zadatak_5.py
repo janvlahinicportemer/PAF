@@ -1,4 +1,5 @@
 import matplotlib.pyplot as plt
+#python -m pip install matplotlib
 
 k1 = ["X", "Y", "X", "Y"]
 k2 = ["prve", "prve", "druge", "druge"]
@@ -31,6 +32,22 @@ def f(x1, y1, x2, y2):
 
 f(v[0], v[1], v[2], v[3])
 
+while True:
+    odabir = input("Odaberi opciju:\n a) Prikaži graf\n b) Spremi graf kao PDF\n")
+
+    if odabir == "a" or odabir == "b":
+        break
+    else:
+        print("Pogrešan unos! Unos mora biti ili 'a' ili 'b'!")
+
+plt.figure()
 plt.scatter((v[0], v[2]), (v[1], v[3]))
 plt.axline((v[0], v[1]), (v[2], v[3]))
-plt.show()
+
+if odabir == "a":
+    plt.show()
+else:
+    ime = input("Unesi ime za PDF file: ")
+    plt.savefig(f"{ime}.pdf")
+    plt.close()
+    print(f"Graf je spremljen kao {ime}.pdf")
