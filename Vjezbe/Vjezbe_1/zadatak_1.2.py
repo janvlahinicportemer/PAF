@@ -36,6 +36,7 @@ def f(F, m):
 f(F, m)
 
 def xt_graf (t_list, x_list):
+    plt.figure()
     plt.plot(t_list, x_list)
     plt.xlabel("t (s)")
     plt.ylabel("x (m)")
@@ -43,6 +44,7 @@ def xt_graf (t_list, x_list):
     plt.show()
 
 def vt_graf (t_list, v_list):
+    plt.figure()
     plt.plot(t_list, v_list)
     plt.xlabel("t (s)")
     plt.ylabel("v (m/s)")
@@ -50,6 +52,7 @@ def vt_graf (t_list, v_list):
     plt.show()
 
 def at_graf (t_list, a_list):
+    plt.figure()
     plt.plot(t_list, a_list)
     plt.xlabel("t (s)")
     plt.ylabel("a (m/s^2)")

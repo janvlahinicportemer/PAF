@@ -22,6 +22,7 @@ def jednoliko_gibanje(F, m):
         t = t + dt
 
     #xt_graf
+    plt.figure()
     plt.plot(t_list, x_list)
     plt.xlabel("t (s)")
     plt.ylabel("x (m)")
@@ -29,6 +30,7 @@ def jednoliko_gibanje(F, m):
     plt.show()
 
     #vt_graf
+    plt.figure()
     plt.plot(t_list, v_list)
     plt.xlabel("t (s)")
     plt.ylabel("v (m/s)")
@@ -36,6 +38,7 @@ def jednoliko_gibanje(F, m):
     plt.show()
 
     #at_graf
+    plt.figure()
     plt.plot(t_list, a_list)
     plt.xlabel("t (s)")
     plt.ylabel("a (m/s^2)")
