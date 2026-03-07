@@ -53,7 +53,7 @@ def at_graf (t_list, a_list):
     plt.plot(t_list, a_list)
     plt.xlabel("t (s)")
     plt.ylabel("a (m/s^2)")
-    plt.title("v - t graf")
+    plt.title("a - t graf")
     plt.show()    
 
 xt_graf (t_list, x_list)
