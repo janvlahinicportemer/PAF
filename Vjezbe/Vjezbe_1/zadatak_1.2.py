@@ -1,4 +1,5 @@
 import matplotlib.pyplot as plt
+#python -m pip install matplotlib
 
 while True:
     try:
