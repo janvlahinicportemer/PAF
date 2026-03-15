@@ -40,6 +40,7 @@ def xt_graf (t_list, x_list):
     plt.xlabel("t (s)")
     plt.ylabel("x (m)")
     plt.title("x - t graf")
+    plt.grid(True)
     plt.show()
 
 def vt_graf (t_list, v_list):
@@ -48,6 +49,7 @@ def vt_graf (t_list, v_list):
     plt.xlabel("t (s)")
     plt.ylabel("v (m/s)")
     plt.title("v - t graf")
+    plt.grid(True)
     plt.show()
 
 def at_graf (t_list, a_list):
@@ -56,6 +58,7 @@ def at_graf (t_list, a_list):
     plt.xlabel("t (s)")
     plt.ylabel("a (m/s^2)")
     plt.title("a - t graf")
+    plt.grid(True)
     plt.show()    
 
 f(F, m)
