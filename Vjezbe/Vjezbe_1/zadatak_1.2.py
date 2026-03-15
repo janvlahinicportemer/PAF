@@ -34,8 +34,6 @@ def f(F, m):
         a_list.append(a)
         t = t + dt
 
-f(F, m)
-
 def xt_graf (t_list, x_list):
     plt.figure()
     plt.plot(t_list, x_list)
@@ -60,6 +58,7 @@ def at_graf (t_list, a_list):
     plt.title("a - t graf")
     plt.show()    
 
+f(F, m)
 xt_graf (t_list, x_list)
 vt_graf (t_list, v_list)
 at_graf (t_list, a_list)
