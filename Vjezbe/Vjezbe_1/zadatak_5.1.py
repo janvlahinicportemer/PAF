@@ -34,7 +34,7 @@ def g(x1, y1, x2, y2):
     plt.figure()
     plt.scatter((x1, x2), (y1, y2))
     plt.axline((x1, y1), (x2, y2))
-    plt.grid()
+    plt.grid(True)
 
     while True:
         odabir = input("Odaberi opciju:\n a) Prikaži graf\n b) Spremi graf kao PDF\n")
