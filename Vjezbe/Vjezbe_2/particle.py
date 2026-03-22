@@ -30,6 +30,8 @@ class Particle:
         self.X0 = None
         self.Y0 = None
 
+        self.g = None
+
         self.X = None
         self.Y = None
 
@@ -47,9 +49,8 @@ class Particle:
         #Vx = konst.
         self.Vy = self.Vy - self.g * dt
 
-        if self.Y >= self.Y0:
-            self.X_list.append(self.X)
-            self.Y_list.append(self.Y)
+        self.X_list.append(self.X)
+        self.Y_list.append(self.Y)
 
     def range(self, dt):
 
@@ -63,11 +64,11 @@ class Particle:
         self.X_list = [self.X]
         self.Y_list = [self.Y]
 
-        while self.Y >= self.Y0:
+        while self.Y >= 0:
 
             self.__move(dt)
 
-        return self.X_list[-1]
+        return self.X_list[-2]
 
     def plot_trajectory(self, dt):
 
@@ -81,7 +82,7 @@ class Particle:
         self.X_list = [self.X]
         self.Y_list = [self.Y]
 
-        while self.Y >= self.Y0:
+        while self.Y >= 0:
 
             self.__move(dt)
 

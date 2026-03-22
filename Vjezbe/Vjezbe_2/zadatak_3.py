@@ -10,9 +10,6 @@ x = float(input("Unesi x: "))
 a = float(input("Unesi a: "))
 b = float(input("Unesi b: "))
 ε = float(input("Unesi ε: "))
-ε1 = float(input("Unesi ε1: "))
-ε2 = float(input("Unesi ε2: "))
-ε3 = float(input("Unesi ε3: "))
 method = input("Želiš li koristiti two-step metodu (DA/NE):").strip().upper()
 
 izraz = input(
@@ -83,38 +80,40 @@ else:
 
 #################################################################################################################################################################################################################################################
 
+ε_list = [0.5, 0.25, 0.1, 0.01, 0.001]
+rezultati = []
+
 if method == "DA":
 
-    x1, y1 = calculus.deriviranje_na_intervalu(f, a, b, ε1, 'two-step')
-    x2, y2 = calculus.deriviranje_na_intervalu(f, a, b, ε2, 'two-step')
-    x3, y3 = calculus.deriviranje_na_intervalu(f, a, b, ε3, 'two-step')
+    for ε in ε_list:
 
-    y_analiticki = []
-
-    for t in x1:
-
-        y_analiticki.append(der_f(t))
-
+        x_num, y_num = calculus.deriviranje_na_intervalu(f, a, b, ε, "two-step")
+        
+        rezultati.append((ε, x_num, y_num))
 else:
+    
+    for ε in ε_list:
+        
+        x_num, y_num = calculus.deriviranje_na_intervalu(f, a, b, ε)
+        
+        rezultati.append((ε, x_num, y_num))
 
-    x1, y1 = calculus.deriviranje_na_intervalu(f, a, b, ε1)
-    x2, y2 = calculus.deriviranje_na_intervalu(f, a, b, ε2)
-    x3, y3 = calculus.deriviranje_na_intervalu(f, a, b, ε3)
+x_analiticki = rezultati[0][1]
+y_analiticki = []
 
-    y_analiticki = []
+for t in x_analiticki:
 
-    for t in x1:
+    y_analiticki.append(der_f(t))
 
-        y_analiticki.append(der_f(t))
+plt.plot(x_analiticki, y_analiticki, label="Analitička derivacija")
 
-plt.plot(x1, y_analiticki, label="Analitička derivacija")
-plt.plot(x1, y1, label=f"Numerička, eps={ε1}")
-plt.plot(x2, y2, label=f"Numerička, eps={ε2}")
-plt.plot(x3, y3, label=f"Numerička, eps={ε3}")
+for ε, x_num, y_num in rezultati:
+
+    plt.plot(x_num, y_num, label=f"Numerička, ε={ε}")
 
 plt.xlabel("x")
 plt.ylabel("f'(x)")
-plt.title("Usporedba analiticke i numericke derivacije")
+plt.title("Usporedba analitičke i numeričke derivacije")
 plt.legend()
 plt.grid()
 plt.show()

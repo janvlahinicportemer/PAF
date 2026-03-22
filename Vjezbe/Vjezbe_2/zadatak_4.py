@@ -50,7 +50,7 @@ def f_i_intf(izraz):
 f, int_f = f_i_intf(izraz)
 
 print("\ntest 1 (pravokutna aproksimacija)\n")
-L_n, U_n = calculus.pravokutna_apox(f, a, b, n)
+L_n, U_n = calculus.pravokutna_aprox(f, a, b, n)
 
 print(f"Donja međa = {round(L_n, 2)}")
 print(f"Gornja međa = {round(U_n, 2)}")
@@ -58,7 +58,7 @@ print(f"Gornja međa = {round(U_n, 2)}")
 #################################################################################################################################################################################################################################################
 
 print("\ntest 2 (trapezna aproksimacija)\n")
-integral = calculus.trapezna_apox(f, a, b, n)
+integral = calculus.trapezna_aprox(f, a, b, n)
 
 print(f"Vrijednost integrala = {round(integral, 2)}")
 
@@ -77,11 +77,11 @@ I_a = int_f(b) - int_f(a)
 
 for n in n_vrijednosti:
 
-    L_n, U_n = calculus.pravokutna_apox(f, a, b, n)
+    L_n, U_n = calculus.pravokutna_aprox(f, a, b, n)
     I_p_aprox = (L_n + U_n) / 2
     pravokutna_aprox_lista.append(I_p_aprox)
 
-    I_t_aprox = calculus.trapezna_apox(f, a, b, n)
+    I_t_aprox = calculus.trapezna_aprox(f, a, b, n)
     trapezna_aprox_lista.append(I_t_aprox)
     
     analiticka_lista.append(I_a)

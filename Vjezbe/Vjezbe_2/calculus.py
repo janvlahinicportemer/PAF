@@ -14,6 +14,8 @@ def deriviranje_u_tocki(f, x, ε, method="three-step"):
 
     return f_der_x
 
+#################################################################################################################################################################################################################################################
+
 def deriviranje_na_intervalu(f, a, b, ε, method="three-step"):
 
     x_list = []
@@ -40,7 +42,7 @@ def deriviranje_na_intervalu(f, a, b, ε, method="three-step"):
 
     return x_list, f_der_x_list
 
-def pravokutna_apox(f, a, b, n):
+def pravokutna_aprox(f, a, b, n):
     
     h = (b - a) / n
     L_n = 0
@@ -60,7 +62,7 @@ def pravokutna_apox(f, a, b, n):
     return L_n, U_n
 
 
-def trapezna_apox(f, a, b, n):
+def trapezna_aprox(f, a, b, n):
 
     h = (b - a) / n
     suma = 0
