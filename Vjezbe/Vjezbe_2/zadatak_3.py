@@ -2,12 +2,16 @@ import calculus
 import math
 from sympy import symbols, sympify, diff, lambdify
 import matplotlib.pyplot as plt
-#python -m pip install sympy
+#py -m pip install sympy
+#py -m pip install matplotlib
 
 x = float(input("Unesi x: "))
 a = float(input("Unesi a: "))
 b = float(input("Unesi b: "))
 ε = float(input("Unesi ε: "))
+ε1 = float(input("Unesi ε1: "))
+ε2 = float(input("Unesi ε2: "))
+ε3 = float(input("Unesi ε3: "))
 method = input("Želiš li koristiti two-step metodu (DA/NE):")
 
 izraz = input(
@@ -106,57 +110,49 @@ if method == "DA":
     print("\n test 2 \n")
     x1, y1 = calculus.deriviranje_na_intervalu(f, a, b, ε, 'two-step')
     
-    print(f"Točke: {x1}")
-    print(f"Derivacije: {y1}")
+    print(f"Točke: {[round(x, 2) for x in x1]}")
+    print(f"Derivacije: {[round(y, 2) for y in y1]}")
 
 else:
 
     print("\n test 2 \n")
     x1, y1 = calculus.deriviranje_na_intervalu(f, a, b, ε)
     
-    print(f"Točke: {x1}")
-    print(f"Derivacije: {y1}")
+    print(f"Točke: {[round(x, 2) for x in x1]}")
+    print(f"Derivacije: {[round(y, 2) for y in y1]}")
 
 ##################################################################################################################################################################
 
 if method == "DA":
 
-    x1, y1 = calculus.deriviranje_na_intervalu(f, a, b, 1e-1, 'two-step')
-    x2, y2 = calculus.deriviranje_na_intervalu(f, a, b, 1e-2, 'two-step')
-    x3, y3 = calculus.deriviranje_na_intervalu(f, a, b, 1e-3, 'two-step')
-    x4, y4 = calculus.deriviranje_na_intervalu(f, a, b, 1e-4, 'two-step')
-    x5, y5 = calculus.deriviranje_na_intervalu(f, a, b, 1e-5, 'two-step')
+    x1, y1 = calculus.deriviranje_na_intervalu(f, a, b, ε1, 'two-step')
+    x2, y2 = calculus.deriviranje_na_intervalu(f, a, b, ε2, 'two-step')
+    x3, y3 = calculus.deriviranje_na_intervalu(f, a, b, ε3, 'two-step')
 
     y_analiticki = []
 
-    for i in (x1):
-        
-        x = x1[i]
-        der = der_analiticki(f, x)
+    for x in (x1):
+
+        der = der_analiticki(x)
         y_analiticki.append(der)
 
 else:
 
-    x1, y1 = calculus.deriviranje_na_intervalu(f, a, b, 1e-1)
-    x2, y2 = calculus.deriviranje_na_intervalu(f, a, b, 1e-2)
-    x3, y3 = calculus.deriviranje_na_intervalu(f, a, b, 1e-3)
-    x4, y4 = calculus.deriviranje_na_intervalu(f, a, b, 1e-4)
-    x5, y5 = calculus.deriviranje_na_intervalu(f, a, b, 1e-5)
+    x1, y1 = calculus.deriviranje_na_intervalu(f, a, b, ε1)
+    x2, y2 = calculus.deriviranje_na_intervalu(f, a, b, ε2)
+    x3, y3 = calculus.deriviranje_na_intervalu(f, a, b, ε3)
 
     y_analiticki = []
 
-    for i in (x1):
+    for x in (x1):
 
-        x = x1[i]
-        der = der_analiticki(f, x)
+        der = der_analiticki(x)
         y_analiticki.append(der)
 
 plt.plot(x1, y_analiticki, label="Analiticka derivacija")
-plt.plot(x1, y1, label="Numericka, eps=1e-1")
-plt.plot(x2, y2, label="Numericka, eps=1e-2")
-plt.plot(x3, y3, label="Numericka, eps=1e-3")
-plt.plot(x4, y4, label="Numericka, eps=1e-4")
-plt.plot(x5, y5, label="Numericka, eps=1e-5")
+plt.plot(x1, y1, label=f"Numericka, eps={ε1}")
+plt.plot(x2, y2, label=f"Numericka, eps={ε2}")
+plt.plot(x3, y3, label=f"Numericka, eps={ε3}")
 
 plt.xlabel("x")
 plt.ylabel("f'(x)")
