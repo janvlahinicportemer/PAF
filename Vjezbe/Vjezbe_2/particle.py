@@ -67,7 +67,7 @@ class Particle:
 
             self.__move(dt)
 
-        return self.X
+        return self.X_list[-1]
 
     def plot_trajectory(self, dt):
 
