@@ -28,99 +28,30 @@ izraz = input(
 
 #################################################################################################################################################################################################################################################
 
-def f(x):
-
-    f = eval(izraz, {
-        "x": x,
-        "abs": abs, 
-        "sin": math.sin,
-        "cos": math.cos,
-        "tg": math.tan,
-        "tan": math.tan,
-        "ctg": ctg,
-        "sh": math.sinh,
-        "ch": math.cosh,
-        "th": math.tanh,
-        "ctgh": ctgh,
-        "arcsin": math.asin,
-        "arccos": math.acos,
-        "arctg": math.atan,
-        "arcctg": arcctg,
-        "arsh": math.asinh,
-        "arch": math.acosh,
-        "arth": math.atanh,
-        "arcctgh": arcctgh,
-        "log": math.log,
-        "ln": math.log,
-        "exp": math.exp,
-        "sqrt": math.sqrt,
-        "pi": math.pi,
-        "e": math.e})
-
-    return f
-
-def ctg(x):
-    f = 1 / math.tan(x)
-    return f
-
-def ctgh(x):
-    f = 1 / math.tanh(x)
-    return f
-
-def arcctg(x):
-    f = math.atan(1 / x)
-    return f
-
-def arcctgh(x):
-    f = 0.5 * math.log((x + 1) / (x - 1)) 
-    return f
-
-#################################################################################################################################################################################################################################################33
-
 x_sym = symbols('x')
 
-def deriviranje_analiticki(izraz):
+def f_i_derf(izraz):
     
     rjecnik = {
-
         "x": x_sym,
-
-        "sin": sin,
-        "cos": cos,
-        "tg": tan,
-        "tan": tan,
-        "ctg": cot,
-
-        "sh": sinh,
-        "ch": cosh,
-        "th": tanh,
-        "ctgh": coth,
-
-        "arcsin": asin,
-        "arccos": acos,
-        "arctg": atan,
-        "arcctg": acot,
-
-        "arsh": asinh,
-        "arch": acosh,
-        "arth": atanh,
-        "arcctgh": acoth,
-
-        "log": log,
-        "ln": log,
-        "exp": exp,
-        "sqrt": sqrt,
-        "abs": Abs,
-
-        "pi": pi,
-        "e": E}
-
-    expr = parse_expr(izraz, local_dict=rjecnik)
+        "sin": sin, "cos": cos, "tg": tan, "tan": tan, "ctg": cot,
+        "sh": sinh, "ch": cosh, "th": tanh, "ctgh": coth,
+        "arcsin": asin, "arccos": acos, "arctg": atan, "arcctg": acot,
+        "arsh": asinh, "arch": acosh, "arth": atanh, "arcctgh": acoth,
+        "log": log, "ln": log, "exp": exp, "sqrt": sqrt, "abs": Abs,
+        "pi": pi, "e": E}
+            
+    expr = parse_expr(izraz, local_dict = rjecnik)
     expr_der = diff(expr, x_sym)
 
-    return lambdify(x_sym, expr_der, "math")
+    f = lambdify(x_sym, expr, "math")
+    der_f = lambdify(x_sym, expr_der, "math")
+
+    return f, der_f
 
 #################################################################################################################################################################################################################################################
+
+f, der_f = f_i_derf(izraz)
 
 if method == "DA":
 
@@ -159,7 +90,6 @@ if method == "DA":
     x3, y3 = calculus.deriviranje_na_intervalu(f, a, b, ε3, 'two-step')
 
     y_analiticki = []
-    der_f = deriviranje_analiticki(izraz)
 
     for t in x1:
 
@@ -172,7 +102,6 @@ else:
     x3, y3 = calculus.deriviranje_na_intervalu(f, a, b, ε3)
 
     y_analiticki = []
-    der_f = deriviranje_analiticki(izraz)
 
     for t in x1:
 
