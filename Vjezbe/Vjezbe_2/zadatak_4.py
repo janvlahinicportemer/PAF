@@ -2,18 +2,13 @@ import calculus
 import math
 import matplotlib.pyplot as plt
 from sympy.parsing.sympy_parser import parse_expr
-from sympy import (symbols, diff, lambdify, sin, cos, tan, cot, sinh, cosh, tanh, coth, asin, acos, atan, acot, asinh, acosh, atanh, acoth, log, exp, sqrt, Abs, pi, E)
+from sympy import (symbols, integrate, lambdify, sin, cos, tan, cot, sinh, cosh, tanh, coth, asin, acos, atan, acot, asinh, acosh, atanh, acoth, log, exp, sqrt, Abs, pi, E)
 
 #################################################################################################################################################################################################################################################
 
-x = float(input("Unesi x: "))
 a = float(input("Unesi a: "))
 b = float(input("Unesi b: "))
-ε = float(input("Unesi ε: "))
-ε1 = float(input("Unesi ε1: "))
-ε2 = float(input("Unesi ε2: "))
-ε3 = float(input("Unesi ε3: "))
-method = input("Želiš li koristiti two-step metodu (DA/NE):").strip().upper()
+n = int(input("Unesi n: "))
 
 izraz = input(
     "Unesi funkciju f(x)\n "
@@ -30,7 +25,7 @@ izraz = input(
 
 x_sym = symbols('x')
 
-def f_i_derf(izraz):
+def f_i_intf(izraz):
     
     rjecnik = {
         "x": x_sym,
@@ -39,84 +34,67 @@ def f_i_derf(izraz):
         "arcsin": asin, "arccos": acos, "arctg": atan, "arcctg": acot,
         "arsh": asinh, "arch": acosh, "arth": atanh, "arcctgh": acoth,
         "log": log, "ln": log, "exp": exp, "sqrt": sqrt, "abs": Abs,
-        "pi": pi, "e": E}
+        "pi": pi, "e": E
+    }
 
-    expr = parse_expr(izraz, local_dict = rjecnik)
-    expr_der = diff(expr, x_sym)
+    expr = parse_expr(izraz, local_dict=rjecnik)
+    expr_int = integrate(expr, x_sym)
 
     f = lambdify(x_sym, expr, "math")
-    der_f = lambdify(x_sym, expr_der, "math")
+    int_f = lambdify(x_sym, expr_int, "math")
 
-    return f, der_f
-
-#################################################################################################################################################################################################################################################
-
-f, der_f = f_i_derf(izraz)
-
-if method == "DA":
-
-    print("\n test 1 \n")
-    print(f"f'({x}) = {calculus.deriviranje_u_tocki(f, x, ε, 'two-step')}")
-
-else:
-
-    print("\n test 1 \n")
-    print(f"f'({x}) = {calculus.deriviranje_u_tocki(f, x, ε)}")
+    return f, int_f
 
 #################################################################################################################################################################################################################################################
 
-if method == "DA":
+f, int_f = f_i_intf(izraz)
 
-    print("\n test 2 \n")
-    x1, y1 = calculus.deriviranje_na_intervalu(f, a, b, ε, 'two-step')
+print("\ntest 1 (pravokutna aproksimacija)\n")
+L_n, U_n = calculus.pravokutna_apox(f, a, b, n)
+
+print(f"Doljnja međa = {round(L_n, 2)}")
+print(f"Gornja međa = {round(U_n, 2)}")
+
+#################################################################################################################################################################################################################################################
+
+print("\ntest 2 (trapezna aproksimacija)\n")
+integral = calculus.trapezna_apox(f, a, b, n)
+
+print(f"Vrijednost integrala = {round(integral, 2)}")
+
+#################################################################################################################################################################################################################################################
+
+print(f"Analitička vrijednost integrala = {int_f(b) - int_f(a)}")
+
+#################################################################################################################################################################################################################################################
+
+n_vrijednosti = [1, 2, 5, 10, 25, 50]
+pravokutna_aprox_lista = []
+trapezna_aprox_lista = []
+analiticka_lista = []
+
+I_a = int_f(b) - int_f(a)
+
+for n in n_vrijednosti:
+
+    L_n, U_n = calculus.pravokutna_apox(f, a, b, n)
+    I_p_aprox = (L_n + U_n) / 2
+    pravokutna_aprox_lista.append(I_p_aprox)
+
+    I_t_aprox = calculus.trapezna_apox(f, a, b, n)
+    trapezna_aprox_lista.append(I_t_aprox)
     
-    print(f"Točke: {[round(x, 2) for x in x1]}")
-    print(f"Derivacije: {[round(y, 2) for y in y1]}")
-
-else:
-
-    print("\n test 2 \n")
-    x1, y1 = calculus.deriviranje_na_intervalu(f, a, b, ε)
+    analiticka_lista.append(I_a)
     
-    print(f"Točke: {[round(x, 2) for x in x1]}")
-    print(f"Derivacije: {[round(y, 2) for y in y1]}")
+plt.plot(n_vrijednosti, trapezna_aprox_lista, marker="s", label="Trapezna aproksimacija")
+plt.plot(n_vrijednosti, pravokutna_aprox_lista, marker="o", label="Pravokutna aproksimacija")
+plt.plot(n_vrijednosti, analiticka_lista, marker="^", label="Analitičko rješenje")
 
-#################################################################################################################################################################################################################################################
-
-if method == "DA":
-
-    x1, y1 = calculus.deriviranje_na_intervalu(f, a, b, ε1, 'two-step')
-    x2, y2 = calculus.deriviranje_na_intervalu(f, a, b, ε2, 'two-step')
-    x3, y3 = calculus.deriviranje_na_intervalu(f, a, b, ε3, 'two-step')
-
-    y_analiticki = []
-
-    for t in x1:
-
-        y_analiticki.append(der_f(t))
-
-else:
-
-    x1, y1 = calculus.deriviranje_na_intervalu(f, a, b, ε1)
-    x2, y2 = calculus.deriviranje_na_intervalu(f, a, b, ε2)
-    x3, y3 = calculus.deriviranje_na_intervalu(f, a, b, ε3)
-
-    y_analiticki = []
-
-    for t in x1:
-
-        y_analiticki.append(der_f(t))
-
-plt.plot(x1, y_analiticki, label="Analitička derivacija")
-plt.plot(x1, y1, label=f"Numerička, eps={ε1}")
-plt.plot(x2, y2, label=f"Numerička, eps={ε2}")
-plt.plot(x3, y3, label=f"Numerička, eps={ε3}")
-
-plt.xlabel("x")
-plt.ylabel("f'(x)")
-plt.title("Usporedba analiticke i numericke derivacije")
+plt.xlabel("Broj podjela n")
+plt.ylabel("Vrijednost integrala")
+plt.title("Usporedba analitičkog i numeričkih rješenja integrala")
 plt.legend()
-plt.grid()
+plt.grid(True)
 plt.show()
 
 #################################################################################################################################################################################################################################################

@@ -39,3 +39,37 @@ def deriviranje_na_intervalu(f, a, b, ε, method="three-step"):
         x = x + korak
 
     return x_list, f_der_x_list
+
+def pravokutna_apox(f, a, b, n):
+    
+    h = (b - a) / n
+    L_n = 0
+    U_n = 0
+
+    for i in range(n):
+
+        x_i = a + i * h
+        x_ip1 = x_i + h
+
+        m_i = min(f(x_i), f(x_ip1))
+        M_i = max(f(x_i), f(x_ip1))
+
+        L_n = L_n + m_i * h
+        U_n = U_n + M_i * h
+
+    return L_n, U_n
+
+
+def trapezna_apox(f, a, b, n):
+
+    h = (b - a) / n
+    suma = 0
+
+    for i in range(1, n):
+
+        x_i = a + i * h
+        suma = suma + f(x_i)
+
+    integral = h * ((f(a) + f(b)) / 2 + suma)
+
+    return integral
