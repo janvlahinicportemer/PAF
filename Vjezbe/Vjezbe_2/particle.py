@@ -51,9 +51,7 @@ class Particle:
             self.X_list.append(self.X)
             self.Y_list.append(self.Y)
 
-    def range(self):
-
-        dt = 0.01
+    def range(self, dt):
 
         self.X = self.X0
         self.Y = self.Y0
@@ -71,9 +69,7 @@ class Particle:
 
         return self.X
 
-    def plot_trajectory(self):
-        
-        dt = 0.01
+    def plot_trajectory(self, dt):
 
         self.X = self.X0
         self.Y = self.Y0

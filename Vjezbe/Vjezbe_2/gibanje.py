@@ -8,10 +8,11 @@ X0 = 0
 Y0 = 0
 
 g = 9.81
+dt = 0.01
 
 p = Particle(V0, θ, X0, Y0)
 
-domet_numerički = p.range()
+domet_numerički = p.range(dt)
 
 θ_radian = math.radians(θ)
 domet_analitički = (V0**2 * math.sin(2 * θ_radian)) / g
@@ -24,5 +25,5 @@ print("Analitički domet:", np.round(domet_analitički, 4), "m")
 print("Apsolutna pogreška:", np.round(abs_err, 4), "m")
 print("Relativna pogreška:", np.round(rel_err, 4), "%")
 
-p.plot_trajectory()
+p.plot_trajectory(dt)
 p.reset()
