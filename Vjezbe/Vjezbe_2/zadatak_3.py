@@ -2,8 +2,6 @@ import calculus
 import math
 from sympy import symbols, sympify, diff, lambdify
 import matplotlib.pyplot as plt
-#py -m pip install sympy
-#py -m pip install matplotlib
 
 x = float(input("Unesi x: "))
 a = float(input("Unesi a: "))
