@@ -44,7 +44,7 @@ class Particle:
         self.X = self.X + self.Vx * dt
         self.Y = self.Y + self.Vy * dt
 
-        # Vx = konst.
+        #Vx = konst.
         self.Vy = self.Vy - self.g * dt
 
         if self.Y >= self.Y0:

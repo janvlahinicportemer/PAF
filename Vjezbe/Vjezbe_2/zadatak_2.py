@@ -35,7 +35,7 @@ for i in range(len(dt_values)):
 plt.figure()
 plt.plot(dt_values, rel_err_list)
 plt.xlabel("Δt (s)")
-plt.ylabel("relativna pogreška (%)")
+plt.ylabel("relativna pogreška [%]")
 plt.title("Ovisnost relativne pogreške o vremenskom koraku Δt")
 plt.grid(True)
 plt.show()
