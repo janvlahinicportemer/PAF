@@ -2,13 +2,14 @@ import math
 import numpy as np
 from particle import Particle
 
+dt = float(input("Unesi dt: "))
+
 V0 = 10
 θ = 45
 X0 = 0
 Y0 = 0
 
 g = 9.81
-dt = 0.01
 
 p = Particle(V0, θ, X0, Y0)
 
