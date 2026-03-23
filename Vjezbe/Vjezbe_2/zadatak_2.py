@@ -2,7 +2,8 @@ import math
 import matplotlib.pyplot as plt
 from particle import Particle
 
-dt_values = [1e-5, 1e-4, 1e-3, 1e-2, 0.5]
+dt = 1e-5
+dt_values = []
 domet_numerički_list = []
 abs_err_list = []
 rel_err_list = []
@@ -19,9 +20,9 @@ p = Particle(V0, θ, X0, Y0)
 
 domet_analitički = (V0**2 * math.sin(2 * θ_radian)) / g
 
-for i in range(len(dt_values)):
-    
-    dt = dt_values[i]
+for i in range(100000):
+
+    dt_values.append(dt)
 
     domet_numerički = p.range(dt)
     domet_numerički_list.append(domet_numerički)
@@ -31,6 +32,8 @@ for i in range(len(dt_values)):
 
     rel_err = (abs_err / domet_analitički) * 100
     rel_err_list.append(rel_err)
+
+    dt = dt + 1e-6
 
 plt.figure()
 plt.plot(dt_values, rel_err_list)

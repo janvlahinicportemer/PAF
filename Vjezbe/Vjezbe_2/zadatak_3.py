@@ -1,7 +1,7 @@
 import calculus
 import math
 import matplotlib.pyplot as plt
-from sympy.parsing.sympy_parser import parse_expr #pretvaranje teksta u simbolički matematički izraz koji SymPy razumije
+from sympy.parsing.sympy_parser import parse_expr
 from sympy import (symbols, diff, lambdify, sin, cos, tan, cot, sinh, cosh, tanh, coth, asin, acos, atan, acot, asinh, acosh, atanh, acoth, log, exp, sqrt, Abs, pi, E)
 
 #################################################################################################################################################################################################################################################
@@ -41,7 +41,7 @@ def f_i_derf(izraz):
     expr = parse_expr(izraz, local_dict = rjecnik)
     expr_der = diff(expr, x_sym)
 
-    f = lambdify(x_sym, expr, "math") #pretvara simbolički izraz u Python funkciju
+    f = lambdify(x_sym, expr, "math")
     der_f = lambdify(x_sym, expr_der, "math")
 
     return f, der_f
@@ -80,7 +80,7 @@ else:
 
 #################################################################################################################################################################################################################################################
 
-ε_list = [0.5, 0.25, 0.1, 0.01, 0.001]
+ε_list = [0.01, 0.1]
 rezultati = []
 
 if method == "DA":

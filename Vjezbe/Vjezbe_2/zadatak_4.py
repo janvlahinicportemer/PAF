@@ -68,7 +68,8 @@ print(f"Analitička vrijednost integrala = {round(int_f(b) - int_f(a), 2)}")
 
 #################################################################################################################################################################################################################################################
 
-n_vrijednosti = [1, 2, 5, 10, 25, 50]
+n = 50
+n_vrijednosti = []
 pravokutna_aprox_lista_Ln = []
 pravokutna_aprox_lista_Un = []
 trapezna_aprox_lista = []
@@ -76,8 +77,9 @@ analiticka_lista = []
 
 I_a = int_f(b) - int_f(a)
 
-for n in n_vrijednosti:
+for i in range(20):
 
+    n_vrijednosti.append(n)
     L_n, U_n = calculus.pravokutna_aprox(f, a, b, n)
     pravokutna_aprox_lista_Ln.append(L_n)
     pravokutna_aprox_lista_Un.append(U_n)
@@ -86,13 +88,15 @@ for n in n_vrijednosti:
     trapezna_aprox_lista.append(I_t_aprox)
     
     analiticka_lista.append(I_a)
-    
-plt.plot(n_vrijednosti, trapezna_aprox_lista, marker="o", label="Trapezna aproksimacija")
-plt.plot(n_vrijednosti, pravokutna_aprox_lista_Ln, marker="s", label="Pravokutna aproksimacija - donja međa")
-plt.plot(n_vrijednosti, pravokutna_aprox_lista_Un, marker="d", label="Pravokutna aproksimacija - gornja međa")
-plt.plot(n_vrijednosti, analiticka_lista, marker="^", label="Analitičko rješenje")
 
-plt.xlabel("Broj podjela n")
+    n = n + 50
+    
+plt.plot(n_vrijednosti, trapezna_aprox_lista, marker="o", linestyle="None", markersize=3, label="Trapezna aproksimacija")
+plt.plot(n_vrijednosti, pravokutna_aprox_lista_Ln, marker="s", linestyle="None", markersize=3, label="Pravokutna aproksimacija - donja međa")
+plt.plot(n_vrijednosti, pravokutna_aprox_lista_Un, marker="d", linestyle="None", markersize=3, label="Pravokutna aproksimacija - gornja međa")
+plt.plot(n_vrijednosti, analiticka_lista, linestyle="-", label="Analitičko rješenje")
+
+plt.xlabel("n")
 plt.ylabel("Vrijednost integrala")
 plt.title("Usporedba analitičkog i numeričkih rješenja integrala")
 plt.legend()

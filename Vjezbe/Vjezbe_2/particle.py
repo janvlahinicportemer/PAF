@@ -43,11 +43,11 @@ class Particle:
 
     def __move(self, dt):
 
-        self.X = self.X + self.Vx * dt
-        self.Y = self.Y + self.Vy * dt
-
         #Vx = konst.
         self.Vy = self.Vy - self.g * dt
+
+        self.X = self.X + self.Vx * dt
+        self.Y = self.Y + self.Vy * dt
 
         self.X_list.append(self.X)
         self.Y_list.append(self.Y)
