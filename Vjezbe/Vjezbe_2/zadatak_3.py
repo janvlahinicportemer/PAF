@@ -109,7 +109,7 @@ plt.plot(x_analiticki, y_analiticki, label="Analitička derivacija")
 
 for ε, x_num, y_num in rezultati:
 
-    plt.plot(x_num, y_num, label=f"Numerička, ε={ε}")
+    plt.plot(x_num, y_num, marker="o", linestyle="None", markersize=3, label=f"Numerička, ε={ε}")
 
 plt.xlabel("x")
 plt.ylabel("f'(x)")
