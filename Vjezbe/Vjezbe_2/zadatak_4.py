@@ -19,7 +19,7 @@ izraz = input(
     "arsh(x), arch(x), arth(x), arcctgh(x), "
     "log(x, b), ln(x), exp(x), a**(x), "
     "abs(x), (konst.; pi, e)\n "
-    "f(x) = ")
+    "\n\nf(x) = ")
 
 #################################################################################################################################################################################################################################################
 
@@ -69,7 +69,8 @@ print(f"Analitička vrijednost integrala = {round(int_f(b) - int_f(a), 2)}")
 #################################################################################################################################################################################################################################################
 
 n_vrijednosti = [1, 2, 5, 10, 25, 50]
-pravokutna_aprox_lista = []
+pravokutna_aprox_lista_Ln = []
+pravokutna_aprox_lista_Un = []
 trapezna_aprox_lista = []
 analiticka_lista = []
 
@@ -78,16 +79,17 @@ I_a = int_f(b) - int_f(a)
 for n in n_vrijednosti:
 
     L_n, U_n = calculus.pravokutna_aprox(f, a, b, n)
-    I_p_aprox = (L_n + U_n) / 2
-    pravokutna_aprox_lista.append(I_p_aprox)
+    pravokutna_aprox_lista_Ln.append(L_n)
+    pravokutna_aprox_lista_Un.append(U_n)
 
     I_t_aprox = calculus.trapezna_aprox(f, a, b, n)
     trapezna_aprox_lista.append(I_t_aprox)
     
     analiticka_lista.append(I_a)
     
-plt.plot(n_vrijednosti, trapezna_aprox_lista, marker="s", label="Trapezna aproksimacija")
-plt.plot(n_vrijednosti, pravokutna_aprox_lista, marker="o", label="Pravokutna aproksimacija")
+plt.plot(n_vrijednosti, trapezna_aprox_lista, marker="o", label="Trapezna aproksimacija")
+plt.plot(n_vrijednosti, pravokutna_aprox_lista_Ln, marker="s", label="Pravokutna aproksimacija - donja međa")
+plt.plot(n_vrijednosti, pravokutna_aprox_lista_Un, marker="d", label="Pravokutna aproksimacija - gornja međa")
 plt.plot(n_vrijednosti, analiticka_lista, marker="^", label="Analitičko rješenje")
 
 plt.xlabel("Broj podjela n")

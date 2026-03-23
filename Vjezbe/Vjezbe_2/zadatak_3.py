@@ -1,7 +1,7 @@
 import calculus
 import math
 import matplotlib.pyplot as plt
-from sympy.parsing.sympy_parser import parse_expr
+from sympy.parsing.sympy_parser import parse_expr #pretvaranje teksta u simbolički matematički izraz koji SymPy razumije
 from sympy import (symbols, diff, lambdify, sin, cos, tan, cot, sinh, cosh, tanh, coth, asin, acos, atan, acot, asinh, acosh, atanh, acoth, log, exp, sqrt, Abs, pi, E)
 
 #################################################################################################################################################################################################################################################
@@ -21,7 +21,7 @@ izraz = input(
     "arsh(x), arch(x), arth(x), arcctgh(x), "
     "log(x, b), ln(x), exp(x), a**(x), "
     "abs(x), (konst.; pi, e)\n "
-    "f(x) = ")
+    "\n\nf(x) = ")
 
 #################################################################################################################################################################################################################################################
 
@@ -41,7 +41,7 @@ def f_i_derf(izraz):
     expr = parse_expr(izraz, local_dict = rjecnik)
     expr_der = diff(expr, x_sym)
 
-    f = lambdify(x_sym, expr, "math")
+    f = lambdify(x_sym, expr, "math") #pretvara simbolički izraz u Python funkciju
     der_f = lambdify(x_sym, expr_der, "math")
 
     return f, der_f
