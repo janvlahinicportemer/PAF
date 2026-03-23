@@ -2,7 +2,7 @@ import math
 import matplotlib.pyplot as plt
 from particle import Particle
 
-dt_values = [0.5, 0.1, 0.05, 0.01, 0.005, 0.001]
+dt_values = [1e-5, 1e-4, 1e-3, 1e-2, 0.5]
 domet_numerički_list = []
 abs_err_list = []
 rel_err_list = []
