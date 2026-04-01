@@ -14,29 +14,16 @@ class Projectile:
         self.m = m
         self.b = b
 
-        self.X = self.X0
-        self.Y = self.Y0
-
-        θ_radian = math.radians(self.θ)
-
-        self.Vx = self.V0 * math.cos(θ_radian)
-        self.Vy = self.V0 * math.sin(θ_radian)
-
-        v = math.sqrt(self.Vx**2 + self.Vy**2)
-        self.a_x = - (self.b / self.m) * v * self.Vx
-        self.a_y = - self.g - (self.b / self.m) * v * self.Vy 
-
-        self.X_list = [self.X]
-        self.Y_list = [self.Y]
+    #################################################################################################################################################################################################################################################
 
     def __move(self, dt):
 
         v = math.sqrt(self.Vx**2 + self.Vy**2)
-        self.a_x = - (self.b / self.m) * v * self.Vx
-        self.a_y = - self.g - (self.b / self.m) * v * self.Vy 
+        a_x = - (self.b / self.m) * v * self.Vx
+        a_y = - self.g - (self.b / self.m) * v * self.Vy 
 
-        self.Vx = self.Vx + self.a_x * dt
-        self.Vy = self.Vy + self.a_y * dt
+        self.Vx = self.Vx + a_x * dt
+        self.Vy = self.Vy + a_y * dt
 
         self.X = self.X + self.Vx * dt
         self.Y = self.Y + self.Vy * dt
@@ -44,7 +31,11 @@ class Projectile:
         self.X_list.append(self.X)
         self.Y_list.append(self.Y)
 
+    #################################################################################################################################################################################################################################################
+   
     def plot_trajectory(self, dt):
+
+        ##############################################################################################
 
         self.X = self.X0
         self.Y = self.Y0
@@ -52,10 +43,6 @@ class Projectile:
         θ_radian = math.radians(self.θ)
         self.Vx = self.V0 * math.cos(θ_radian)
         self.Vy = self.V0 * math.sin(θ_radian)
-
-        v = math.sqrt(self.Vx**2 + self.Vy**2)
-        self.a_x = - (self.b / self.m) * v * self.Vx
-        self.a_y = - self.g - (self.b / self.m) * v * self.Vy 
 
         self.X_list = [self.X]
         self.Y_list = [self.Y]
