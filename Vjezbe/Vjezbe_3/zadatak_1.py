@@ -35,8 +35,6 @@ class Projectile:
    
     def plot_trajectory(self, dt):
 
-        ##############################################################################################
-
         self.X = self.X0
         self.Y = self.Y0
 
@@ -59,18 +57,17 @@ class Projectile:
         plt.grid(True)
         plt.show()
 
+dt = 0.0000001
 
-dt = float(input("Unesi dt: "))
+V0 = 10
+θ = 45
+X0 = 0
+Y0 = 0
+m = 1
 
-V0 = float(input("Unesi V0: "))
-θ = float(input("Unesi θ: "))
-X0 = float(input("Unesi X0: "))
-Y0 = float(input("Unesi Y0: "))
-m = float(input("Unesi m: "))
-
-ro = float(input("Unesi ρ: "))
-Cd = float(input("Unesi Cd: "))
-A = float(input("Unesi A: "))
+ro = 1000
+Cd = 10
+A = 0.5
 
 b = (ro * Cd * A) / 2
 

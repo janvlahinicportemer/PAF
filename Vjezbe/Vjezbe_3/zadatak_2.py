@@ -146,15 +146,15 @@ class Projectile:
 
 dt = 0.01
 
-V0 = float(input("Unesi V0: "))
-θ = float(input("Unesi θ: "))
-X0 = float(input("Unesi X0: "))
-Y0 = float(input("Unesi Y0: "))
-m = float(input("Unesi m: "))
+V0 = 10
+θ = 45
+X0 = 0
+Y0 = 0
+m = 1
 
-ro = float(input("Unesi ρ: "))
-Cd = float(input("Unesi Cd: "))
-A = float(input("Unesi A: "))
+ro = 10
+Cd = 1
+A = 0.5
 
 b = (ro * Cd * A) / 2
 
