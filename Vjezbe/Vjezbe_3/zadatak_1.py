@@ -48,28 +48,38 @@ class Projectile:
         while self.Y >= 0:
 
             self.__move(dt)
-
-        plt.figure()
-        plt.plot(self.X_list, self.Y_list)
-        plt.xlabel("x (m)")
-        plt.ylabel("y (m)")
-        plt.title("x - y graf")
-        plt.grid(True)
-        plt.show()
-
-dt = 0.0000001
+        
+        return self.X_list, self.Y_list
 
 V0 = 10
 θ = 45
 X0 = 0
 Y0 = 0
-m = 1
+m = 10
 
-ro = 1000
-Cd = 10
+ro = 1
+Cd = 1
 A = 0.5
 
 b = (ro * Cd * A) / 2
 
-p = Projectile(V0, θ, X0, Y0, m, b)
-p.plot_trajectory(dt)
+dt = 1e-6
+
+plt.figure()
+
+for i in range (6): 
+
+    p = Projectile(V0, θ, X0, Y0, m, b)
+    
+    X_list, Y_list = p.plot_trajectory(dt)
+
+    plt.plot(X_list, Y_list, label=f"dt = {round(dt, 7)}")
+
+    dt = dt *5
+
+plt.xlabel("x (m)")
+plt.ylabel("y (m)")
+plt.title("x - y graf")
+plt.grid(True)
+plt.legend()
+plt.show()

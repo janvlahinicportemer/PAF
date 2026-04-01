@@ -33,67 +33,6 @@ class Projectile:
 
     #################################################################################################################################################################################################################################################
     
-    def __move_RK4(self, dt):
-
-        #####k1#####
-        v1 = math.sqrt(self.Vx**2 + self.Vy**2)
-        a1_x = - (self.b / self.m) * v1 * self.Vx
-        a1_y = - self.g - (self.b / self.m) * v1 * self.Vy
-
-        k1_X = self.Vx
-        k1_Y = self.Vy
-        k1_Vx = a1_x
-        k1_Vy = a1_y
-
-        #####k2#####
-        Vx2 = self.Vx + k1_Vx * dt / 2
-        Vy2 = self.Vy + k1_Vy * dt / 2
-
-        v2 = math.sqrt(Vx2**2 + Vy2**2)
-        a2_x = - (self.b / self.m) * v2 * Vx2
-        a2_y = - self.g - (self.b / self.m) * v2 * Vy2
-
-        k2_X = Vx2
-        k2_Y = Vy2
-        k2_Vx = a2_x
-        k2_Vy = a2_y
-
-        #####k3#####
-        Vx3 = self.Vx + k2_Vx * dt / 2
-        Vy3 = self.Vy + k2_Vy * dt / 2
-
-        v3 = math.sqrt(Vx3**2 + Vy3**2)
-        a3_x = - (self.b / self.m) * v3 * Vx3
-        a3_y = - self.g - (self.b / self.m) * v3 * Vy3
-
-        k3_X = Vx3
-        k3_Y = Vy3
-        k3_Vx = a3_x
-        k3_Vy = a3_y
-
-        #####k4#####
-        Vx4 = self.Vx + k3_Vx * dt
-        Vy4 = self.Vy + k3_Vy * dt
-
-        v4 = math.sqrt(Vx4**2 + Vy4**2)
-        a4_x = - (self.b / self.m) * v4 * Vx4
-        a4_y = - self.g - (self.b / self.m) * v4 * Vy4
-
-        k4_X = Vx4
-        k4_Y = Vy4
-        k4_Vx = a4_x
-        k4_Vy = a4_y
-
-        ############
-
-        self.Vx = self.Vx + 1/6 * (k1_Vx + 2*k2_Vx + 2*k3_Vx + k4_Vx) * dt
-        self.Vy = self.Vy + 1/6 * (k1_Vy + 2*k2_Vy + 2*k3_Vy + k4_Vy) * dt
-
-        self.X = self.X + 1/6 * (k1_X + 2*k2_X + 2*k3_X + k4_X) * dt
-        self.Y = self.Y + 1/6 * (k1_Y + 2*k2_Y + 2*k3_Y + k4_Y) * dt
-
-        self.X_RK4_list.append(self.X)
-        self.Y_RK4_list.append(self.Y)
 
     #################################################################################################################################################################################################################################################
 
