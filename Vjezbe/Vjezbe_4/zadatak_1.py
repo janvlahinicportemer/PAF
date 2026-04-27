@@ -89,7 +89,7 @@ for i in range (len(B_x)):
     x_lista_p, y_lista_p, z_lista_p, t_lista = gibanje_pozitron (q_p, m, x0, y0, z0, v_x0, v_y0, v_z0, E_x[i], E_y[i], E_z[i], B_x[i], B_y[i], B_z[i], dt, N)
 
     fig = plt.figure()
-    ax = fig.add_subplot(111, projection='3d')
+    ax = fig.add_subplot(projection='3d')
 
     ax.plot(x_lista_e, y_lista_e, z_lista_e, label="Elektron")
     ax.plot(x_lista_p, y_lista_p, z_lista_p, label="Pozitron")
