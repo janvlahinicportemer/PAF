@@ -30,7 +30,6 @@ def gibanje_elektron (q_e, m, x, y, z, v_x, v_y, v_z, E_x, E_y, E_z, B_x, B_y, B
     x_lista = []
     y_lista = []
     z_lista = []
-    t_lista = []
 
     for i in range(N):
 
@@ -49,16 +48,14 @@ def gibanje_elektron (q_e, m, x, y, z, v_x, v_y, v_z, E_x, E_y, E_z, B_x, B_y, B
         x_lista.append(x)
         y_lista.append(y)
         z_lista.append(z)
-        t_lista.append(i*dt)
     
-    return x_lista, y_lista, z_lista, t_lista
+    return x_lista, y_lista, z_lista
 
 def gibanje_pozitron (q_p, m, x, y, z, v_x, v_y, v_z, E_x, E_y, E_z, B_x, B_y, B_z, dt, N):
     
     x_lista = []
     y_lista = []
     z_lista = []
-    t_lista = []
 
     for i in range(N):
 
@@ -77,16 +74,15 @@ def gibanje_pozitron (q_p, m, x, y, z, v_x, v_y, v_z, E_x, E_y, E_z, B_x, B_y, B
         x_lista.append(x)
         y_lista.append(y)
         z_lista.append(z)
-        t_lista.append(dt*i)
 
-    return x_lista, y_lista, z_lista, t_lista
+    return x_lista, y_lista, z_lista
 
 #################################################################################################################################################################################################################################################
 
 for i in range (len(B_x)):
 
-    x_lista_e, y_lista_e, z_lista_e, t_lista = gibanje_elektron (q_e, m, x0, y0, z0, v_x0, v_y0, v_z0, E_x[i], E_y[i], E_z[i], B_x[i], B_y[i], B_z[i], dt, N)
-    x_lista_p, y_lista_p, z_lista_p, t_lista = gibanje_pozitron (q_p, m, x0, y0, z0, v_x0, v_y0, v_z0, E_x[i], E_y[i], E_z[i], B_x[i], B_y[i], B_z[i], dt, N)
+    x_lista_e, y_lista_e, z_lista_e = gibanje_elektron (q_e, m, x0, y0, z0, v_x0, v_y0, v_z0, E_x[i], E_y[i], E_z[i], B_x[i], B_y[i], B_z[i], dt, N)
+    x_lista_p, y_lista_p, z_lista_p = gibanje_pozitron (q_p, m, x0, y0, z0, v_x0, v_y0, v_z0, E_x[i], E_y[i], E_z[i], B_x[i], B_y[i], B_z[i], dt, N)
 
     fig = plt.figure()
     ax = fig.add_subplot(projection='3d')
