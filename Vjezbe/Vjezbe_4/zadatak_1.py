@@ -98,7 +98,7 @@ for i in range (len(B_x)):
     ax.set_ylabel("y")
     ax.set_zlabel("z")
 
-    ax.set_title("XYZ graf")
+    ax.set_title(f"xyz-graf\nE=({E_x[i]}, {E_y[i]}, {E_z[i]}) V/m\n B=({B_x[i]}, {B_y[i]}, {B_z[i]}) T")
     ax.legend()
     plt.show()
 
