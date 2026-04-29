@@ -14,7 +14,7 @@ def aritmeticka_sredina(x_list):
 def standardna_devijacija(x_list):
 
     x = 0
-    x_s = aritmeticka_sredina (x_list)
+    x_s = aritmeticka_sredina(x_list)
 
     for i in range(len(x_list)):
         x = x + (x_list[i]-x_s)**2
