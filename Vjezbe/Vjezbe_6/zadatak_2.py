@@ -35,9 +35,9 @@ def standardna_devijacija(x_list):
 
 def volumen_valjka(R, L):
 
-    R_mean = np.mean(R)/10
+    R_mean = np.mean(R)
 
-    L_mean = np.mean(L)/10
+    L_mean = np.mean(L)
 
     V_mean = np.pi * R_mean**2 * L_mean
 
@@ -45,19 +45,19 @@ def volumen_valjka(R, L):
 
 def sigma_volumen(R, sigma_R, L, sigma_L):
 
-    R_mean = np.mean(R)/10
+    R_mean = np.mean(R)
 
-    L_mean = np.mean(L)/10
+    L_mean = np.mean(L)
 
     sigma_V = np.sqrt((2 * np.pi * R_mean * L_mean * sigma_R)**2 + (np.pi * R_mean**2 * sigma_L)**2)
 
     return sigma_V
 
 print("Valjak broj 1:")
-print(f"V = ({volumen_valjka(V1_2R/2, V1_L):e} ± {sigma_volumen(V1_2R/2, standardna_devijacija(V1_2R/2)/10, V1_L, standardna_devijacija(V1_L)/10):e}) cm^3")
+print(f"V = ({volumen_valjka(V1_2R/2/10, V1_L/10):e} ± {sigma_volumen(V1_2R/2/10, standardna_devijacija(V1_2R/2)/10, V1_L/10, standardna_devijacija(V1_L)/10):e}) cm^3")
 
 print("\nValjak broj 2:")
-print(f"V = ({volumen_valjka(V2_2R/2, V2_L):e} ± {sigma_volumen(V2_2R/2, standardna_devijacija(V2_2R/2)/10, V2_L, standardna_devijacija(V2_L)/10):e}) cm^3")
+print(f"V = ({volumen_valjka(V2_2R/2/10, V2_L/10):e} ± {sigma_volumen(V2_2R/2/10, standardna_devijacija(V2_2R/2)/10, V2_L/10, standardna_devijacija(V2_L)/10):e}) cm^3")
 
 print("\nValjak broj 3:")
-print(f"V = ({volumen_valjka(V3_2R/2, V3_L):e} ± {sigma_volumen(V3_2R/2, standardna_devijacija(V3_2R/2)/10, V3_L, standardna_devijacija(V3_L)/10):e}) cm^3")
+print(f"V = ({volumen_valjka(V3_2R/2/10, V3_L/10):e} ± {sigma_volumen(V3_2R/2/10, standardna_devijacija(V3_2R/2)/10, V3_L/10, standardna_devijacija(V3_L)/10):e}) cm^3")
