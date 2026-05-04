@@ -33,31 +33,39 @@ def standardna_devijacija(x_list):
 
     return x
 
-def volumen_valjka(R, L):
+def gustoća_valjka(R, L, m):
 
     R_mean = np.mean(R)/10
 
     L_mean = np.mean(L)/10
+
+    m_mean = np.mean(m)
 
     V_mean = np.pi * R_mean**2 * L_mean
+    ro_mean = m_mean / V_mean
 
-    return V_mean
+    return ro_mean
 
-def sigma_volumen(R, sigma_R, L, sigma_L):
+def sigma_gustoća(R, sigma_R, L, sigma_L, m, sigma_m):
 
     R_mean = np.mean(R)/10
 
     L_mean = np.mean(L)/10
 
-    sigma_V = np.sqrt((2 * np.pi * R_mean * L_mean * sigma_R)**2 + (np.pi * R_mean**2 * sigma_L)**2)
+    m_mean = np.mean(m)
 
-    return sigma_V
+    sigma_ro = np.sqrt(
+    ((1 / (np.pi * R_mean**2 * L_mean)) * sigma_m)**2 +
+    ((2 * m_mean / (np.pi * R_mean**3 * L_mean)) * sigma_R)**2 +
+    ((m_mean / (np.pi * R_mean**2 * L_mean**2)) * sigma_L)**2)
+
+    return sigma_ro
 
 print("Valjak broj 1:")
-print(f"V = ({volumen_valjka(V1_2R/2, V1_L):e} ± {sigma_volumen(V1_2R/2, standardna_devijacija(V1_2R/2)/10, V1_L, standardna_devijacija(V1_L)/10):e}) cm^3")
+print(f"ρ = ({gustoća_valjka(V1_2R/2, V1_L, V1_m):e} ± {sigma_gustoća(V1_2R/2, standardna_devijacija(V1_2R/2)/10, V1_L, standardna_devijacija(V1_L)/10, V1_m, standardna_devijacija(V1_m)):e}) g/cm^3")
 
 print("\nValjak broj 2:")
-print(f"V = ({volumen_valjka(V2_2R/2, V2_L):e} ± {sigma_volumen(V2_2R/2, standardna_devijacija(V2_2R/2)/10, V2_L, standardna_devijacija(V2_L)/10):e}) cm^3")
+print(f"ρ = ({gustoća_valjka(V2_2R/2, V2_L, V2_m):e} ± {sigma_gustoća(V2_2R/2, standardna_devijacija(V2_2R/2)/10, V2_L, standardna_devijacija(V2_L)/10, V2_m, standardna_devijacija(V2_m)):e}) g/cm^3")
 
 print("\nValjak broj 3:")
-print(f"V = ({volumen_valjka(V3_2R/2, V3_L):e} ± {sigma_volumen(V3_2R/2, standardna_devijacija(V3_2R/2)/10, V3_L, standardna_devijacija(V3_L)/10):e}) cm^3")
+print(f"ρ = ({gustoća_valjka(V3_2R/2, V3_L, V3_m):e} ± {sigma_gustoća(V3_2R/2, standardna_devijacija(V3_2R/2)/10, V3_L, standardna_devijacija(V3_L)/10, V3_m, standardna_devijacija(V3_m)):e}) g/cm^3")
