@@ -62,10 +62,10 @@ def sigma_gustoća(R, sigma_R, L, sigma_L, m, sigma_m):
     return sigma_ro
 
 print("Valjak broj 1:")
-print(f"ρ = ({gustoća_valjka(V1_2R/2/10, V1_L/10, V1_m):e} ± {sigma_gustoća(V1_2R/2/10, standardna_devijacija(V1_2R/2)/10, V1_L/10, standardna_devijacija(V1_L)/10, V1_m, standardna_devijacija(V1_m)):e}) g/cm^3")
+print(f"ρ = ({np.round(gustoća_valjka(V1_2R/2/10, V1_L/10, V1_m), 2)} ± {np.round(sigma_gustoća(V1_2R/2/10, standardna_devijacija(V1_2R/2)/10, V1_L/10, standardna_devijacija(V1_L)/10, V1_m, standardna_devijacija(V1_m)), 2)}) g/cm^3")
 
 print("\nValjak broj 2:")
-print(f"ρ = ({gustoća_valjka(V2_2R/2/10, V2_L/10, V2_m):e} ± {sigma_gustoća(V2_2R/2/10, standardna_devijacija(V2_2R/2)/10, V2_L/10, standardna_devijacija(V2_L)/10, V2_m, standardna_devijacija(V2_m)):e}) g/cm^3")
+print(f"ρ = ({np.round(gustoća_valjka(V2_2R/2/10, V2_L/10, V2_m), 2)} ± {np.round(sigma_gustoća(V2_2R/2/10, standardna_devijacija(V2_2R/2)/10, V2_L/10, standardna_devijacija(V2_L)/10, V2_m, standardna_devijacija(V2_m)), 2)}) g/cm^3")
 
 print("\nValjak broj 3:")
-print(f"ρ = ({gustoća_valjka(V3_2R/2/10, V3_L/10, V3_m):e} ± {sigma_gustoća(V3_2R/2/10, standardna_devijacija(V3_2R/2)/10, V3_L/10, standardna_devijacija(V3_L)/10, V3_m, standardna_devijacija(V3_m)):e}) g/cm^3")
+print(f"ρ = ({np.round(gustoća_valjka(V3_2R/2/10, V3_L/10, V3_m), 3)} ± {np.round(sigma_gustoća(V3_2R/2/10, standardna_devijacija(V3_2R/2)/10, V3_L/10, standardna_devijacija(V3_L)/10, V3_m, standardna_devijacija(V3_m)), 3)}) g/cm^3")

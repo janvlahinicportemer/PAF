@@ -54,10 +54,10 @@ def sigma_volumen(R, sigma_R, L, sigma_L):
     return sigma_V
 
 print("Valjak broj 1:")
-print(f"V = ({volumen_valjka(V1_2R/2/10, V1_L/10):e} ± {sigma_volumen(V1_2R/2/10, standardna_devijacija(V1_2R/2)/10, V1_L/10, standardna_devijacija(V1_L)/10):e}) cm^3")
+print(f"V = ({np.round(volumen_valjka(V1_2R/2/10, V1_L/10), 1)} ± {np.round(sigma_volumen(V1_2R/2/10, standardna_devijacija(V1_2R/2)/10, V1_L/10, standardna_devijacija(V1_L)/10), 1)}) cm^3")
 
 print("\nValjak broj 2:")
-print(f"V = ({volumen_valjka(V2_2R/2/10, V2_L/10):e} ± {sigma_volumen(V2_2R/2/10, standardna_devijacija(V2_2R/2)/10, V2_L/10, standardna_devijacija(V2_L)/10):e}) cm^3")
+print(f"V = ({np.round(volumen_valjka(V2_2R/2/10, V2_L/10), 2)} ± {np.round(sigma_volumen(V2_2R/2/10, standardna_devijacija(V2_2R/2)/10, V2_L/10, standardna_devijacija(V2_L)/10), 2)}) cm^3")
 
 print("\nValjak broj 3:")
-print(f"V = ({volumen_valjka(V3_2R/2/10, V3_L/10):e} ± {sigma_volumen(V3_2R/2/10, standardna_devijacija(V3_2R/2)/10, V3_L/10, standardna_devijacija(V3_L)/10):e}) cm^3")
+print(f"V = ({np.round(volumen_valjka(V3_2R/2/10, V3_L/10), 2)} ± {np.round(sigma_volumen(V3_2R/2/10, standardna_devijacija(V3_2R/2)/10, V3_L/10, standardna_devijacija(V3_L)/10), 2)}) cm^3")

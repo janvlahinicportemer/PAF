@@ -34,16 +34,16 @@ def standardna_devijacija(x_list):
     return x
 
 print("Valjak broj 1:")
-print(f"R = ({aritmeticka_sredina(V1_2R/2)} ± {standardna_devijacija(V1_2R/2)}) mm")
-print(f"L = ({aritmeticka_sredina(V1_L)} ± {standardna_devijacija(V1_L)}) mm")
-print(f"m = ({aritmeticka_sredina(V1_m)} ± {standardna_devijacija(V1_m)}) g")
+print(f"R = ({np.round(aritmeticka_sredina(V1_2R/2), 2)} ± {np.round(standardna_devijacija(V1_2R/2), 2)}) mm")
+print(f"L = ({np.round(aritmeticka_sredina(V1_L), 1)} ± {np.round(standardna_devijacija(V1_L), 1)}) mm")
+print(f"m = ({np.round(aritmeticka_sredina(V1_m), 2)} ± {np.round(standardna_devijacija(V1_m), 2)}) g")
 
 print("\nValjak broj 2:")
-print(f"R = ({aritmeticka_sredina(V2_2R/2)} ± {standardna_devijacija(V2_2R/2)}) mm")
-print(f"L = ({aritmeticka_sredina(V2_L)} ± {standardna_devijacija(V2_L)}) mm")
-print(f"m = ({aritmeticka_sredina(V2_m)} ± {standardna_devijacija(V2_m)}) g")
+print(f"R = ({np.round(aritmeticka_sredina(V2_2R/2), 2)} ± {np.round(standardna_devijacija(V2_2R/2), 2)}) mm")
+print(f"L = ({np.round(aritmeticka_sredina(V2_L), 2)} ± {np.round(standardna_devijacija(V2_L), 2)}) mm")
+print(f"m = ({np.round(aritmeticka_sredina(V2_m), 2)} ± {np.round(standardna_devijacija(V2_m), 2)}) g")
 
 print("\nValjak broj 3:")
-print(f"R = ({aritmeticka_sredina(V3_2R/2)} ± {standardna_devijacija(V3_2R/2)}) mm")
-print(f"L = ({aritmeticka_sredina(V3_L)} ± {standardna_devijacija(V3_L)}) mm")
-print(f"m = ({aritmeticka_sredina(V3_m)} ± {standardna_devijacija(V3_m)}) g")
+print(f"R = ({np.round(aritmeticka_sredina(V3_2R/2), 3)} ± {np.round(standardna_devijacija(V3_2R/2), 3)}) mm")
+print(f"L = ({np.round(aritmeticka_sredina(V3_L), 2)} ± {np.round(standardna_devijacija(V3_L), 2)}) mm")
+print(f"m = ({np.round(aritmeticka_sredina(V3_m), 2)} ± {np.round(standardna_devijacija(V3_m), 2)}) g")

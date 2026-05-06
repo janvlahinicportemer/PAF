@@ -75,10 +75,10 @@ ro_željezo = 7.87 #(u g/cm^3)
 ro_aluminij = 2.70 #(u g/cm^3)
 
 print("Valjak broj 1 (bakar):")
-print(f"δρ = {abs(ro_mean_1 - ro_bakar) / ro_bakar * 100} %")
+print(f"δρ = {np.round(abs(ro_mean_1 - ro_bakar) / ro_bakar * 100, 2)} %")
 
 print("\nValjak broj 2 (željezo):")
-print(f"δρ = {abs(ro_mean_2 - ro_željezo) / ro_željezo * 100} %")
+print(f"δρ = {np.round(abs(ro_mean_2 - ro_željezo) / ro_željezo * 100, 3)} %")
 
 print("\nValjak broj 3 (aluminij):")
-print(f"δρ = {abs(ro_mean_3 - ro_aluminij) / ro_aluminij * 100} %")
+print(f"δρ = {np.round(abs(ro_mean_3 - ro_aluminij) / ro_aluminij * 100, 2)} %")
