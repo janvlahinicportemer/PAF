@@ -16,9 +16,10 @@ def histogram(podaci, k):
 
     rubovi = []
 
-    for i in range(k + 1):
+    for i in range(k):
         rub = xmin + i*h
         rubovi.append(rub)
+    rubovi.append(xmax)
 
     brojač = [0] * k
 
