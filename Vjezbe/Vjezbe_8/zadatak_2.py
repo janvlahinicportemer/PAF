@@ -66,8 +66,8 @@ plt.grid(True)
 plt.legend()
 plt.show()
 
-print(f"l_120 = ({np.round(l_fit_120, 4)} ± {np.round(sigma_l_120, 4)}) m")
+print(f"\nl_120 = ({np.round(l_fit_120, 4)} ± {np.round(sigma_l_120, 4)}) m")
 print(f"Relativna pogreška = {np.round(rel_error_120, 2)} %")
 
-print(f"l_240 = ({np.round(l_fit_240, 3)} ± {np.round(sigma_l_240, 3)}) m")
-print(f"Relativna pogreška = {np.round(rel_error_240, 2)} %")
+print(f"\nl_240 = ({np.round(l_fit_240, 3)} ± {np.round(sigma_l_240, 3)}) m")
+print(f"Relativna pogreška = {np.round(rel_error_240, 2)} %\n")
