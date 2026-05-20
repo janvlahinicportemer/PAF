@@ -15,7 +15,10 @@ L_120 = 0.120 #m
 L_240 = 0.240 #m
 
 def teor_model(theta, l):
-    return 2*np.pi*np.sqrt(l/(g*np.cos(theta)))
+    
+    model = 2*np.pi*np.sqrt(l/(g*np.cos(theta)))
+    
+    return model
 
 prams_1, cov_1 = curve_fit(teor_model, kut_rad, T_120, p0=[L_120])
 parms_2, cov_2 = curve_fit(teor_model, kut_rad, T_240, p0=[L_240])

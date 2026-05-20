@@ -32,7 +32,7 @@ print(f"a = ({np.round(a, 1)} ± {np.round(sigma_a, 1)}) ")
 print(f"b = ({np.round(b, 2)} ± {np.round(sigma_b, 2)})")
 
 x_fit = np.linspace(min(x), max(x), 1000)
-y_fit = a * x_fit + b
+y_fit = a*x_fit + b
 
 plt.figure()
 plt.scatter(x, y, color="red", label="Eksperimentalni podaci")
@@ -56,22 +56,19 @@ for i in range(n):
 x_2 = np.array(x_list_2)
 y_2 = np.array(y_list_2)
 
-a_2 = (n * np.sum(x_2 * y_2) - np.sum(x_2) * np.sum(y_2)) / (n * np.sum(x_2**2) - (np.sum(x_2))**2)
-b_2 = (np.sum(y_2) - a_2 * np.sum(x_2)) / n
+a_2 = np.sum(x_2 * y_2) / np.sum(x_2**2)
 
-sigma_a_2 = np.sqrt((1 / (n - 2)) * ((n * np.sum(y_2**2) - (np.sum(y_2))**2) / (n * np.sum(x_2**2) - (np.sum(x_2))**2) - a_2**2))
-sigma_b_2 = sigma_a_2 * np.sqrt((1 / n) * np.sum(x_2**2))
+sigma_a_2 = np.sqrt((1/n) * (np.sum(y_2**2) / np.sum(x_2**2) - a_2**2))
 
 print("\nb)")
 print(f"a = ({np.round(a_2, 3)} ± {np.round(sigma_a_2, 3)}) m/s²")
-print(f"b = ({np.round(b_2, 2)} ± {np.round(sigma_b_2, 2)}) m")
 
 x_fit_2 = np.linspace(min(x_2), max(x_2), 1000)
-y_fit_2 = a_2 * x_fit_2 + b_2
+y_fit_2 = a_2 * x_fit_2
 
 plt.figure()
 plt.scatter(x_2, y_2, color="red", label="Eksperimentalni podaci")
-plt.plot(x_fit_2, y_fit_2, color="green", label=f"Linearna regresija: s = {np.round(a_2, 3)}t² + {np.round(b_2, 3)}")
+plt.plot(x_fit_2, y_fit_2, color="green", label=f"Linearna regresija: s = {np.round(a_2, 3)}t²")
 plt.xlabel("t² [s²]")
 plt.ylabel("s [m]")
 plt.title("Linearna regresija: s - t²")
