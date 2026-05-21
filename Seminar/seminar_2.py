@@ -42,7 +42,7 @@ for i, ID in enumerate(ID_list_2):
     
     try:
         R = sp.bodvrd(str(ID), "RADII", 3)[1]
-        R_rječnik[ID_list[i]] = np.max(R[:2])
+        R_rječnik[ID_list[i]] = R
     
     except:
         R_rječnik[ID_list[i]] = "UNKNOWN"
