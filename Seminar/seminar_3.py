@@ -10,6 +10,8 @@ p = 7 # ID, x, y, z, vx, vy, vz
 M_mnp = np.zeros((m, n, p))
 a_all = np.zeros((m, 3))
 
+sudar = False
+
 for i, t in enumerate(t_list):
 
     ax_total = 0
@@ -55,7 +57,7 @@ for i, t in enumerate(t_list):
     else:
         
         x_komet, y_komet, z_komet, vx_komet, vy_komet, vz_komet = RK4(t_list[i-1], dt, M_mnp[i-1, 0, 1:4], M_mnp[i-1, 0, 4:7])
-
+        
         M_mnp[i, 0, :] = [-1, x_komet, y_komet, z_komet, vx_komet, vy_komet, vz_komet]
 
         for j, ID in enumerate(ID_valid_list):
@@ -70,6 +72,22 @@ for i, t in enumerate(t_list):
 
             R_j = np.sqrt(dx**2 + dy**2 + dz**2)
 
+            R_planet_ID = R_rječnik[ID]
+
+            Rx_planet_ID = R_planet_ID[0]
+            Ry_planet_ID = R_planet_ID[1]
+            Rz_planet_ID = R_planet_ID[2]
+                        
+            S = (dx**2 / (Rx_planet_ID + R_komet)**2 + dy**2 / (Ry_planet_ID + R_komet)**2 + dz**2 / (Rz_planet_ID + R_komet)**2)
+
+            if S <= 1:
+                
+                print("Sudar s tijelom:", IME_rječnik[ID])
+                print("Vrijeme sudara:", t)
+                
+                sudar = True
+                break
+
             GM = GM_rječnik[ID]
 
             ax = GM * dx / R_j**3
@@ -79,5 +97,8 @@ for i, t in enumerate(t_list):
             ax_total = ax_total + ax
             ay_total = ay_total + ay
             az_total = az_total + az
+
+        if sudar:
+            break
 
         a_all[i, :] = [ax_total, ay_total, az_total]
