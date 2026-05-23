@@ -31,29 +31,31 @@ def F(t, Y):
 
 def akceleracija(t, r_komet):
 
-        ax_total = 0
-        ay_total = 0
-        az_total = 0
+    ax_total = 0
+    ay_total = 0
+    az_total = 0
 
-        x_komet = r_komet[0]
-        y_komet = r_komet[1]
-        z_komet = r_komet[2]
+    x_komet = r_komet[0]
+    y_komet = r_komet[1]
+    z_komet = r_komet[2]
 
-        for ID in ID_valid_list:
+    for ID in ID_valid_list:
 
-            state_vector, _ = sp.spkezr(str(ID), t, referentni_sustav, abcorr, ishodište)
-            x, y, z, vx, vy, vz = state_vector
+        state_vector, _ = sp.spkezr(str(ID), t, referentni_sustav, abcorr, ishodište)
+        x, y, z, vx, vy, vz = state_vector
 
-            dx = x - x_komet
-            dy = y - y_komet
-            dz = z - z_komet
+        dx = x - x_komet
+        dy = y - y_komet
+        dz = z - z_komet
 
-            R_j = np.sqrt(dx**2 + dy**2 + dz**2)
+        R_j = np.sqrt(dx**2 + dy**2 + dz**2)
 
-            GM = GM_rječnik[ID]
+        GM = GM_rječnik[ID]
 
-            ax_total = ax_total + GM * dx / R_j**3
-            ay_total = ay_total + GM * dy / R_j**3
-            az_total = az_total + GM * dz / R_j**3
+        ax_total = ax_total + GM * dx / R_j**3
+        ay_total = ay_total + GM * dy / R_j**3
+        az_total = az_total + GM * dz / R_j**3
+    
+    a_komet = np.array([ax_total, ay_total, az_total])
 
-    return np.array([ax_total, ay_total, az_total])
+    return a_komet
