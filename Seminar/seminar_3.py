@@ -31,8 +31,7 @@ for i, t in enumerate(t_list):
             
         for j, ID in enumerate(ID_valid_list):
             
-            ID_2 = Id_valid_list_2[j]
-            state_vector, _ = sp.spkezr(str(ID_2), t, referentni_sustav, abcorr, ishodište)
+            state_vector, _ = sp.spkezr(str(ID), t, referentni_sustav, abcorr, ishodište)
             x, y, z, vx, vy, vz = state_vector
             M_mnp[0, j+1, :] = [ID, x, y, z, vx, vy, vz]
 
@@ -62,8 +61,7 @@ for i, t in enumerate(t_list):
 
         for j, ID in enumerate(ID_valid_list):
             
-            ID_2 = Id_valid_list_2[j]
-            state_vector, _ = sp.spkezr(str(ID_2), t, referentni_sustav, abcorr, ishodište)
+            state_vector, _ = sp.spkezr(str(ID), t, referentni_sustav, abcorr, ishodište)
             x, y, z, vx, vy, vz = state_vector
             M_mnp[i, j+1, :] = [ID, x, y, z, vx, vy, vz]
 

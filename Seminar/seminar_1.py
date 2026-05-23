@@ -3,6 +3,7 @@ import numpy as np
 
 ### UČITAVANJE DATOTEKA ###
 sp.furnsh("de442.bsp")
+sp.furnsh("mar097.bsp")
 sp.furnsh("gm_de440.tpc")
 sp.furnsh("pck00011.tpc")
 sp.furnsh("naif0012.tls")
