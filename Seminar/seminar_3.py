@@ -1,6 +1,7 @@
 from seminar_1 import *
 from seminar_2 import *
 from RK4 import *
+import spiceypy as sp
 
 ### DEFINIRANJE MATRICE DIMENZIJE MxNxP ###
 m = N
