@@ -1,7 +1,6 @@
 from seminar_1 import *
 from seminar_2 import *
 from RK4 import *
-import spiceypy as sp
 
 ### DEFINIRANJE MATRICE DIMENZIJE MxNxP ###
 m = N
@@ -32,7 +31,7 @@ for i, t in enumerate(t_list):
             
         for j, ID in enumerate(ID_valid_list):
             
-            state_vector, _ = sp.spkezr(str(ID), t0, referentni_sustav, abcorr, ishodište)
+            state_vector, _ = sp.spkezr(str(ID), t, referentni_sustav, abcorr, ishodište)
             x, y, z, vx, vy, vz = state_vector
             M_mnp[0, j+1, :] = [ID, x, y, z, vx, vy, vz]
 

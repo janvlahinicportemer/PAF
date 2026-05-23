@@ -2,24 +2,21 @@ from seminar_1 import *
 
 ### UČITAVANJE KONSTANTNIH PODATAKA ###
 ID_list = [
-    1,    # MERKUR
-    2,    # VENERA
-    3,    # ZEMLJA
-    4,    # MARS
+    199,  # MERKUR
+    299,  # VENERA
+    399,  # ZEMLJA
+    499,  # MARS
     10]   # SUNCE
-
-ID_list_2 = [199, 299, 399, 499, 10]
 
 IME_rječnik = {}
 GM_rječnik = {} #(u km^3/s^2)
 R_rječnik = {} #(u km)
 ID_valid_list = []
-ID_valid_list_2 = []
 FRAME_rječnik = {}
 
 ######################################################################################
 
-for i, ID in enumerate(ID_list_2):
+for i, ID in enumerate(ID_list):
     
     try:
         ime = sp.bodc2n(ID)
@@ -41,7 +38,7 @@ for ID in ID_list:
 
 ######################################################################################
 
-for i, ID in enumerate(ID_list_2):
+for i, ID in enumerate(ID_list):
     
     try:
         R = sp.bodvrd(str(ID), "RADII", 3)[1]
@@ -56,15 +53,12 @@ for i, ID in enumerate(ID_list):
 
     if not isinstance(GM_rječnik[ID], str) and not isinstance(R_rječnik[ID], str):
         ID_valid_list.append(ID)
-        ID_valid_list_2.append(ID_list_2[i])
 
 ######################################################################################
 
-for i, ID_2 in enumerate(ID_valid_list_2):
+for i, ID in enumerate(ID_list):
 
-    ID = ID_valid_list[i]
-
-    ime = sp.bodc2n(ID_2)
+    ime = sp.bodc2n(ID)
     FRAME_rječnik[ID] = "IAU_" + ime.upper()
 
 ######################################################################################

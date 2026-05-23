@@ -39,7 +39,7 @@ def akceleracija(t, r_komet):
     y_komet = r_komet[1]
     z_komet = r_komet[2]
 
-    for ID in ID_valid_list:
+    for j, ID in enumerate(ID_valid_list):
 
         state_vector, _ = sp.spkezr(str(ID), t, referentni_sustav, abcorr, ishodište)
         x, y, z, vx, vy, vz = state_vector
