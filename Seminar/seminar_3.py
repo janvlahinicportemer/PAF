@@ -77,9 +77,18 @@ for i, t in enumerate(t_list):
             Rx_planet_ID = R_planet_ID[0]
             Ry_planet_ID = R_planet_ID[1]
             Rz_planet_ID = R_planet_ID[2]
-                        
-            S = (dx**2 / (Rx_planet_ID + R_komet)**2 + dy**2 / (Ry_planet_ID + R_komet)**2 + dz**2 / (Rz_planet_ID + R_komet)**2)
 
+            dr_J2000 = np.array([x_komet - x, y_komet - y, z_komet - z])
+            body_frame = FRAME_rječnik[ID]    
+            rotacija = sp.pxform("J2000", body_frame, t)
+            dr_body = rotacija @ dr_J2000
+
+            dx_body = dr_body[0]
+            dy_body = dr_body[1]
+            dz_body = dr_body[2]
+
+            S = (dx_body**2 / (Rx_planet_ID + R_komet)**2 + dy_body**2 / (Ry_planet_ID + R_komet)**2 + dz_body**2 / (Rz_planet_ID + R_komet)**2)
+            
             if S <= 1:
                 
                 print("Sudar s tijelom:", IME_rječnik[ID])

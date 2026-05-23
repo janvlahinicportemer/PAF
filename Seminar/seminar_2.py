@@ -14,6 +14,8 @@ IME_rječnik = {}
 GM_rječnik = {} #(u km^3/s^2)
 R_rječnik = {} #(u km)
 ID_valid_list = []
+ID_valid_list_2 = []
+FRAME_rječnik = {}
 
 ######################################################################################
 
@@ -50,9 +52,19 @@ for i, ID in enumerate(ID_list_2):
 
 ######################################################################################
 
-for ID in ID_list:
+for i, ID in enumerate(ID_list):
 
     if not isinstance(GM_rječnik[ID], str) and not isinstance(R_rječnik[ID], str):
         ID_valid_list.append(ID)
+        ID_valid_list_2.append(ID_list_2[i])
+
+######################################################################################
+
+for i, ID_2 in enumerate(ID_valid_list_2):
+
+    ID = ID_valid_list[i]
+
+    ime = sp.bodc2n(ID_2)
+    FRAME_rječnik[ID] = "IAU_" + ime.upper()
 
 ######################################################################################
