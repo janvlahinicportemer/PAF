@@ -5,9 +5,10 @@ ID_list = [
     1,    # MERKUR
     2,    # VENERA
     3,    # ZEMLJA
+    4,    # MARS
     10]   # SUNCE
 
-ID_list_2 = [199, 299, 399, 10]
+ID_list_2 = [199, 299, 399, 499, 10]
 
 IME_rječnik = {}
 GM_rječnik = {} #(u km^3/s^2)
