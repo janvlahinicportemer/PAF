@@ -8,7 +8,7 @@ ID_list = [
     499,  # MARS
     10]   # SUNCE
 
-ID_list_2 = [1, 2, 3, 4, 10]
+ID_list_2 = [199, 299, 399, 4, 10]
 
 IME_rječnik = {}
 GM_rječnik = {} #(u km^3/s^2)

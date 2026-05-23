@@ -16,11 +16,11 @@ abcorr = "NONE"
 promatrač = "EARTH"
 
 ### DEFINIRANJE POČETNOG TRENUTKA ###
-t0 = sp.str2et("6 MAY 2025 11:11:11 TDB")
+t0 = sp.str2et("6 MAY 1950 11:11:11 TDB")
 
 ### DEFINIRANJE VREMENSKOG INTERVALA ###
 dt = 60*20
-N = 25000
+N = 10000
 t_list = np.arange(t0, t0+N*dt, dt)
 
 ### DEFINIRANJE ASTRONOMSKE JEDINICE ###
