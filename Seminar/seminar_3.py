@@ -10,6 +10,8 @@ p = 7 # ID, x, y, z, vx, vy, vz
 M_mnp = np.zeros((m, n, p))
 a_all = np.zeros((m, 3))
 
+i_kraj = 0
+
 for i, t in enumerate(t_list):
 
     ax_total = 0
@@ -78,10 +80,11 @@ for i, t in enumerate(t_list):
 
             if sudar:
                 
-                vrijeme_sudara_utc = sp.et2utc(t_sudar, "C", 3)
+                vrijeme_sudara_utc = sp.et2utc(t_sudar, "C", 0)
 
                 print("Sudar s tijelom:", IME_rječnik[ID])
                 print("Vrijeme sudara UTC:", vrijeme_sudara_utc)
+                i_sudar = i
 
                 break
 
@@ -99,3 +102,5 @@ for i, t in enumerate(t_list):
             break
 
         a_all[i, :] = [ax_total, ay_total, az_total]
+
+    i_kraj = i

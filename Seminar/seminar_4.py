@@ -5,7 +5,7 @@ from seminar_3 import *
 from provjera_sudara import *
 import matplotlib.pyplot as plt
 
-M_plot = M_mnp[M_mnp[:, 0, 0] == -1]
+M_plot = M_mnp[(M_mnp[:, 0, 0] == -1) & np.all(M_mnp[:, 1:, 0] != 0, axis=1)]
 
 plt.figure()
 
