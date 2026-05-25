@@ -84,7 +84,7 @@ for i, t in enumerate(t_list):
 
                 print("Sudar s tijelom:", IME_rječnik[ID])
                 print("Vrijeme sudara UTC:", vrijeme_sudara_utc)
-                i_sudar = i
+                i_kraj = i -1
 
                 break
 
