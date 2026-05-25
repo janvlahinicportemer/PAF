@@ -29,12 +29,12 @@ AU = 149597870.7   #(u km)
 
 ### DEFINIRANJE KOMETA ###
 x0_komet = -5.0*AU   #(u km)
-y0_komet =  0.8*AU   #(u km)
+y0_komet =  0        #(u km)
 z0_komet =  0        #(u km)
 
-vx0_komet =  18.0    #(u km/s)
-vy0_komet = -6.5     #(u km/s)
+vx0_komet =  1       #(u km/s)
+vy0_komet =  1       #(u km/s)
 vz0_komet =  0       #(u km/s)
 
-m_komet = 2.2e14     #(u kg)
+m_komet = 1.0e14     #(u kg)
 R_komet = 11.0       #(u km)

@@ -10,8 +10,6 @@ p = 7 # ID, x, y, z, vx, vy, vz
 M_mnp = np.zeros((m, n, p))
 a_all = np.zeros((m, 3))
 
-sudar = False
-
 for i, t in enumerate(t_list):
 
     ax_total = 0
@@ -72,18 +70,19 @@ for i, t in enumerate(t_list):
 
             R_j = np.sqrt(dx**2 + dy**2 + dz**2)
 
-            sudar_interval, t_sudar = provjera_sudara(t_list[i-1], t_list[i], ID,
+            sudar, t_sudar = provjera_sudara(t_list[i-1], t_list[i], ID,
                                                       M_mnp[i-1, 0, 1], M_mnp[i-1, 0, 2], M_mnp[i-1, 0, 3],
                                                       M_mnp[i,   0, 1], M_mnp[i,   0, 2], M_mnp[i,   0, 3],
                                                       M_mnp[i-1,j+1,1], M_mnp[i-1,j+1,2], M_mnp[i-1,j+1,3],
                                                       M_mnp[i,  j+1,1], M_mnp[i,  j+1,2], M_mnp[i, j+1, 3])
 
-            if sudar_interval:
+            if sudar:
                 
+                vrijeme_sudara_utc = sp.et2utc(t_sudar, "C", 3)
+
                 print("Sudar s tijelom:", IME_rječnik[ID])
-                print("Vrijeme sudara:", t_sudar)
-                
-                sudar = True
+                print("Vrijeme sudara UTC:", vrijeme_sudara_utc)
+
                 break
 
             GM = GM_rječnik[ID]
