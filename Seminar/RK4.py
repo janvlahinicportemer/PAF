@@ -1,6 +1,8 @@
 from seminar_1 import *
 from seminar_2 import *
 
+#############################################################################################################################
+
 def RK4(t_old, dt, r_old, v_old):
 
     Y_old = np.array([r_old[0], r_old[1], r_old[2], v_old[0], v_old[1], v_old[2]])
@@ -59,3 +61,5 @@ def akceleracija(t, r_komet):
     a_komet = np.array([ax_total, ay_total, az_total])
 
     return a_komet
+
+#############################################################################################################################
