@@ -102,5 +102,4 @@ for i, t in enumerate(t_list):
             break
 
         a_all[i, :] = [ax_total, ay_total, az_total]
-
-    i_kraj = i
+        i_kraj = i
