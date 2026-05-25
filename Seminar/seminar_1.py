@@ -20,8 +20,8 @@ promatrač = "EARTH"
 t0 = sp.str2et("6 MAY 1950 11:11:11 TDB")
 
 ### DEFINIRANJE VREMENSKOG INTERVALA ###
-dt = 60*20
-N = 40000
+dt = 60*60*2 
+N = 7000
 t_list = np.arange(t0, t0+N*dt, dt)
 
 ### DEFINIRANJE ASTRONOMSKE JEDINICE ###
