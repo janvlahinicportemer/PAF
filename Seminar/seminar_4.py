@@ -43,6 +43,6 @@ plt.title("Putanje kometa i planeta u heliocentričnom sustavu")
 plt.grid(False)
 plt.legend()
 
-plt.savefig("IMG_putanje.jpg", dpi=300, bbox_inches="tight")
+plt.savefig("Z_IMG_putanje.jpg", dpi=300, bbox_inches="tight")
 
 plt.show()
