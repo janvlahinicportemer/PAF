@@ -5,10 +5,12 @@ from seminar_3 import *
 from provjera_sudara import *
 import matplotlib.pyplot as plt
 
+M_plot = M_mnp[M_mnp[:, 0, 0] == -1]
+
 plt.figure()
 
-plt.plot(M_mnp[:, 0, 1], M_mnp[:, 0, 2])
-plt.scatter(M_mnp[-1, 0, 1], M_mnp[-1, 0, 2], s=50, label="KOMET")
+plt.plot(M_plot[:, 0, 1], M_plot[:, 0, 2])
+plt.scatter(M_plot[-1, 0, 1], M_plot[-1, 0, 2], s=50, label="KOMET")
 
 for i, ID in enumerate(ID_valid_list):
 
@@ -19,14 +21,14 @@ for i, ID in enumerate(ID_valid_list):
         color = None
         size = 50
 
-    plt.plot(M_mnp[:, i+1, 1], M_mnp[:, i+1, 2], color=color)
-    plt.scatter(M_mnp[-1, i+1, 1], M_mnp[-1, i+1, 2], s=size, label=f"{IME_rječnik[ID]}", color=color)
+    plt.plot(M_plot[:, i+1, 1], M_plot[:, i+1, 2], color=color)
+    plt.scatter(M_plot[-1, i+1, 1], M_plot[-1, i+1, 2], s=size, label=f"{IME_rječnik[ID]}", color=color)
 
-x_min = np.min(M_mnp[:, :, 1]) - 1*AU
-x_max = np.max(M_mnp[:, :, 1]) + 1*AU
+x_min = np.min(M_plot[:, :, 1]) - 1*AU
+x_max = np.max(M_plot[:, :, 1]) + 1*AU
 
-y_min = np.min(M_mnp[:, :, 2]) - 1*AU
-y_max = np.max(M_mnp[:, :, 2]) + 1*AU
+y_min = np.min(M_plot[:, :, 2]) - 1*AU
+y_max = np.max(M_plot[:, :, 2]) + 1*AU
 
 plt.xlim(x_min, x_max)
 plt.ylim(y_min, y_max)
