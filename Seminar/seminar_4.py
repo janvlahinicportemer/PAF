@@ -1,8 +1,8 @@
+from RK4 import *
 from seminar_1 import *
 from seminar_2 import *
 from seminar_3 import *
-from RK4 import *
-import matplotlib.pyplot as plt
+from provjera_sudara import *
 
 plt.figure()
 
@@ -36,6 +36,6 @@ plt.title("Putanje kometa i planeta u heliocentričnom sustavu")
 plt.grid(False)
 plt.legend()
 
-plt.savefig("putanje.jpg", dpi=300, bbox_inches="tight")
+plt.savefig("IMG_putanje.jpg", dpi=300, bbox_inches="tight")
 
 plt.show()

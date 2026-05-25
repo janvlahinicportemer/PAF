@@ -56,7 +56,7 @@ def provjera_sudara(Ta, Tb, ID,
     t_sudar = Ta + λ_min * (Tb - Ta)
 
     if S_min <= 1:
-        return True, t_sudar, λ_min, S_min
-        
+        return True, t_sudar
+
     else:
-        return False, None, λ_min, S_min
+        return False, None
