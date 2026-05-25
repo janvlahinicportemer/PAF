@@ -1,5 +1,5 @@
-import spiceypy as sp
 import numpy as np
+import spiceypy as sp
 
 ### UČITAVANJE DATOTEKA ###
 sp.furnsh("de442.bsp")
