@@ -34,7 +34,7 @@ z0_komet =  -1*AU    #(u km)
 
 vx0_komet = 13     #(u km/s)
 vy0_komet = 8      #(u km/s)
-vz0_komet = 0      #(u km/s)
+vz0_komet = 1      #(u km/s)
 
 m_komet = 1.0e14     #(u kg)
 R_komet = 11.0       #(u km)
