@@ -28,12 +28,12 @@ t_list = np.arange(t0, t0+N*dt, dt)
 AU = 149597870.7   #(u km)
 
 ### DEFINIRANJE KOMETA ###
-x0_komet =  -6*AU    #(u km)
-y0_komet =  -1*AU    #(u km)
-z0_komet =  0        #(u km)
+x0_komet =  -4*AU    #(u km)
+y0_komet =  -2*AU    #(u km)
+z0_komet =  -1*AU    #(u km)
 
-vx0_komet = 15     #(u km/s)
-vy0_komet = 5      #(u km/s)
+vx0_komet = 13     #(u km/s)
+vy0_komet = 8      #(u km/s)
 vz0_komet = 0      #(u km/s)
 
 m_komet = 1.0e14     #(u kg)
