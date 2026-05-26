@@ -1,6 +1,6 @@
 from seminar_1 import *
 from seminar_2 import *
-from scipy.optimize import minimize_scalar
+from scipy.optimize import minimize_scalar, brentq
 
 #############################################################################################################################
 
@@ -30,15 +30,52 @@ def provjera_sudara(Ta, Tb, ID,
 
     R_planet = R_rječnik[ID]
 
-    A = R_planet[0] + R_komet
-    B = R_planet[1] + R_komet
-    C = R_planet[2] + R_komet
+    Rp_x = R_planet[0]
+    Rp_y = R_planet[1]
+    Rp_z = R_planet[2]
 
     body_frame = FRAME_rječnik[ID]
 
     #############################################################################################################################
 
-    def S(λ):
+    def udaljenost_tocka_elipsoid(P, Rp_x, Rp_y, Rp_z):
+
+        X = P[0]
+        Y = P[1]
+        Z = P[2]
+
+        provjera_unutra = X**2/Rp_x**2 + Y**2/Rp_y**2 + Z**2/Rp_z**2
+
+        if provjera_unutra <= 1:
+            return 0
+
+        def F(t):
+            return (
+                (Rp_x**2 * X**2) / (t + Rp_x**2)**2 +
+                (Rp_y**2 * Y**2) / (t + Rp_y**2)**2 +
+                (Rp_z**2 * Z**2) / (t + Rp_z**2)**2
+                - 1
+            )
+
+        t_min = 0
+        t_max = max(Rp_x**2, Rp_y**2, Rp_z**2)
+
+        while F(t_max) > 0:
+            t_max = 2*t_max
+
+        t = brentq(F, t_min, t_max)
+
+        Qx = Rp_x**2 * X / (t + Rp_x**2)
+        Qy = Rp_y**2 * Y / (t + Rp_y**2)
+        Qz = Rp_z**2 * Z / (t + Rp_z**2)
+
+        d = np.sqrt((X - Qx)**2 + (Y - Qy)**2 + (Z - Qz)**2)
+
+        return d
+
+    #############################################################################################################################
+
+    def D(λ):
 
         T_λ = Ta + λ * (Tb - Ta)
 
@@ -55,24 +92,20 @@ def provjera_sudara(Ta, Tb, ID,
         rotacija = sp.pxform("J2000", body_frame, T_λ)
         D_planet_λ = rotacija @ D_J2000_λ
 
-        X_λ = D_planet_λ[0]
-        Y_λ = D_planet_λ[1]
-        Z_λ = D_planet_λ[2]
+        udaljenost = udaljenost_tocka_elipsoid(D_planet_λ, Rp_x, Rp_y, Rp_z)
 
-        S_λ = X_λ**2 / A**2 + Y_λ**2 / B**2 + Z_λ**2 / C**2
-
-        return S_λ
+        return udaljenost
 
     #############################################################################################################################
 
-    rezultat = minimize_scalar(S, bounds=(0, 1), method="bounded")
+    rezultat = minimize_scalar(D, bounds=(0, 1), method="bounded")
 
     λ_min = rezultat.x
-    S_min = rezultat.fun
+    d_min = rezultat.fun
 
     t_sudar = Ta + λ_min * (Tb - Ta)
 
-    if S_min <= 1:
+    if d_min <= R_komet:
         return True, t_sudar
 
     else:
