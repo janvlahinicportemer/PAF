@@ -73,10 +73,15 @@ for i, t in enumerate(t_list):
             R_j = np.sqrt(dx**2 + dy**2 + dz**2)
 
             sudar, t_sudar = provjera_sudara(t_list[i-1], t_list[i], ID,
-                                                      M_mnp[i-1, 0, 1], M_mnp[i-1, 0, 2], M_mnp[i-1, 0, 3],
-                                                      M_mnp[i,   0, 1], M_mnp[i,   0, 2], M_mnp[i,   0, 3],
-                                                      M_mnp[i-1,j+1,1], M_mnp[i-1,j+1,2], M_mnp[i-1,j+1,3],
-                                                      M_mnp[i,  j+1,1], M_mnp[i,  j+1,2], M_mnp[i, j+1, 3])
+
+                                             M_mnp[i-1, 0, 1], M_mnp[i-1, 0, 2], M_mnp[i-1, 0, 3],
+                                             M_mnp[i,   0, 1], M_mnp[i,   0, 2], M_mnp[i,   0, 3],
+                                             M_mnp[i-1, 0, 4], M_mnp[i-1, 0, 5], M_mnp[i-1, 0, 6],
+                                             M_mnp[i,   0, 4], M_mnp[i,   0, 5], M_mnp[i,   0, 6],
+                                             M_mnp[i-1, j+1, 1], M_mnp[i-1, j+1, 2], M_mnp[i-1, j+1, 3],
+                                             M_mnp[i,   j+1, 1], M_mnp[i,   j+1, 2], M_mnp[i,   j+1, 3],
+                                             M_mnp[i-1, j+1, 4], M_mnp[i-1, j+1, 5], M_mnp[i-1, j+1, 6],
+                                             M_mnp[i,   j+1, 4], M_mnp[i,   j+1, 5], M_mnp[i,   j+1, 6])
 
             if sudar:
                 

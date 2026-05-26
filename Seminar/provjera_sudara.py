@@ -4,17 +4,29 @@ from scipy.optimize import minimize_scalar
 
 #############################################################################################################################
 
-def provjera_sudara(Ta, Tb, ID, 
+def provjera_sudara(Ta, Tb, ID,
                     Xka, Yka, Zka,
                     Xkb, Ykb, Zkb,
+                    V_Xka, V_Yka, V_Zka,
+                    V_Xkb, V_Ykb, V_Zkb,
                     Xpa, Ypa, Zpa,
-                    Xpb, Ypb, Zpb):
+                    Xpb, Ypb, Zpb,
+                    V_Xpa, V_Ypa, V_Zpa,
+                    V_Xpb, V_Ypb, V_Zpb):
     
     Rka = np.array([Xka, Yka, Zka])
     Rkb = np.array([Xkb, Ykb, Zkb])
 
+    Vka = np.array([V_Xka, V_Yka, V_Zka])
+    Vkb = np.array([V_Xkb, V_Ykb, V_Zkb])
+
     Rpa = np.array([Xpa, Ypa, Zpa])
     Rpb = np.array([Xpb, Ypb, Zpb])
+
+    Vpa = np.array([V_Xpa, V_Ypa, V_Zpa])
+    Vpb = np.array([V_Xpb, V_Ypb, V_Zpb])
+
+    Δt = Tb - Ta
 
     R_planet = R_rječnik[ID]
 
@@ -30,8 +42,13 @@ def provjera_sudara(Ta, Tb, ID,
 
         T_λ = Ta + λ * (Tb - Ta)
 
-        Rk_λ = Rka + λ * (Rkb - Rka)
-        Rp_λ = Rpa + λ * (Rpb - Rpa)
+        h00 = 2*λ**3 - 3*λ**2 + 1
+        h10 = λ**3 - 2*λ**2 + λ
+        h01 = -2*λ**3 + 3*λ**2
+        h11 = λ**3 - λ**2
+
+        Rk_λ = h00*Rka + h10*Δt*Vka + h01*Rkb + h11*Δt*Vkb
+        Rp_λ = h00*Rpa + h10*Δt*Vpa + h01*Rpb + h11*Δt*Vpb
 
         D_J2000_λ = Rk_λ - Rp_λ
 
