@@ -22,10 +22,10 @@ for ime in imena:
     linije.append(linija)
     tocke.append(tocka)
 
-x_min = np.nanmin(M_mnp[0:i_kraj+1, :, 1]) - 2*AU
-x_max = np.nanmax(M_mnp[0:i_kraj+1, :, 1]) + 2*AU
-y_min = np.nanmin(M_mnp[0:i_kraj+1, :, 2]) - 2*AU
-y_max = np.nanmax(M_mnp[0:i_kraj+1, :, 2]) + 2*AU
+x_min = np.nanmin(M_mnp[0:i_kraj+1, :, 1]) - AU
+x_max = np.nanmax(M_mnp[0:i_kraj+1, :, 1]) + AU
+y_min = np.nanmin(M_mnp[0:i_kraj+1, :, 2]) - AU
+y_max = np.nanmax(M_mnp[0:i_kraj+1, :, 2]) + AU
 
 ax.set_xlim(x_min, x_max)
 ax.set_ylim(y_min, y_max)
