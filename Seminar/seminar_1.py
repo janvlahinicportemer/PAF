@@ -17,7 +17,7 @@ abcorr = "NONE"
 promatrač = "EARTH"
 
 ### DEFINIRANJE POČETNOG TRENUTKA ###
-t0 = sp.str2et("1 JUNE 2026 00:00:00 TDB")
+t0 = sp.str2et("15 JUNE 2026 00:00:00 TDB")
 
 ### DEFINIRANJE VREMENSKOG INTERVALA ###
 dt = 60*60*2 
@@ -30,11 +30,9 @@ AU = 149597870.7   #(u km)
 ### DEFINIRANJE KOMETA ###
 x0_komet =  -4*AU    #(u km)
 y0_komet =  -2*AU    #(u km)
-z0_komet =  -1*AU    #(u km)
 
 vx0_komet = 13     #(u km/s)
 vy0_komet = 8      #(u km/s)
-vz0_komet = 1      #(u km/s)
 
 m_komet = 1.0e14     #(u kg)
 R_komet = 11.0       #(u km)

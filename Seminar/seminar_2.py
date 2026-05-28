@@ -42,7 +42,7 @@ for i, ID in enumerate(ID_list):
     
     try:
         R = sp.bodvrd(str(ID), "RADII", 3)[1]
-        R_rječnik[ID_list[i]] = R
+        R_rječnik[ID_list[i]] = np.mean([R[0], R[1]])
     
     except:
         R_rječnik[ID_list[i]] = "UNKNOWN"
