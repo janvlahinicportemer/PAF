@@ -55,10 +55,3 @@ for i, ID in enumerate(ID_list):
         ID_valid_list.append(ID)
 
 ######################################################################################
-
-for i, ID in enumerate(ID_list):
-
-    ime = sp.bodc2n(ID)
-    FRAME_rječnik[ID] = "IAU_" + ime.upper()
-
-######################################################################################
