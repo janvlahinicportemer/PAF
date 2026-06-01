@@ -20,16 +20,16 @@ promatrač = "EARTH"
 t0 = sp.str2et("15 JUNE 2026 00:00:00 TDB")
 
 ### DEFINIRANJE VREMENSKOG INTERVALA ###
-dt = 60*60 
-N = 5000
+dt = 60*60*2
+N = 7500
 t_list = np.arange(t0, t0+N*dt, dt)
 
 ### DEFINIRANJE ASTRONOMSKE JEDINICE ###
 AU = 149597870.7   #(u km)
 
 ### DEFINIRANJE KOMETA ###
-x0_komet =  -5*AU    #(u km)
-y0_komet =  -2.5*AU  #(u km)
+x0_komet =  -4*AU    #(u km)
+y0_komet =  -1*AU  #(u km)
 
 vx0_komet = 10       #(u km/s)
 vy0_komet = 10       #(u km/s)
