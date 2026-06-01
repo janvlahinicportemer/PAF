@@ -1,6 +1,7 @@
 from seminar_1 import *
 from seminar_2 import *
 from seminar_3 import *
+import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
 
@@ -11,20 +12,31 @@ imena = ["KOMET"] + [IME_rječnik[ID] for ID in ID_valid_list]
 linije = []
 tocke = []
 
-for ime in imena:
+for k, ime in enumerate(imena):
 
-    linija, = ax.plot([], [], lw=1.5, label=ime)
-    boja = linija.get_color()
+    if k > 0 and ID_valid_list[k - 1] == 10:
+        boja = "gold"
+        velicina_tocke = 9
+        debljina_linije = 1.2
+    else:
+        boja = None
+        velicina_tocke = 5
+        debljina_linije = 1.5
 
-    tocka, = ax.plot([], [], "o", markersize=6, color=boja)
+    linija, = ax.plot([], [], lw=debljina_linije, label=ime, color=boja)
+    boja_linije = linija.get_color()
+
+    tocka, = ax.plot([], [], "o", markersize=velicina_tocke, color=boja_linije)
 
     linije.append(linija)
     tocke.append(tocka)
 
-x_min = np.nanmin(M_mnp[0:i_kraj+1, :, 1]) - AU
-x_max = np.nanmax(M_mnp[0:i_kraj+1, :, 1]) + AU
-y_min = np.nanmin(M_mnp[0:i_kraj+1, :, 2]) - AU
-y_max = np.nanmax(M_mnp[0:i_kraj+1, :, 2]) + AU
+M_anim = M_mnp[0:i_kraj + 1, :, :]
+
+x_min = np.nanmin(M_anim[:, :, 1]) - AU
+x_max = np.nanmax(M_anim[:, :, 1]) + AU
+y_min = np.nanmin(M_anim[:, :, 2]) - AU
+y_max = np.nanmax(M_anim[:, :, 2]) + AU
 
 ax.set_xlim(x_min, x_max)
 ax.set_ylim(y_min, y_max)
@@ -35,37 +47,51 @@ ax.set_title("Animacija gibanja kometa i planeta u heliocentričnom sustavu")
 ax.grid(False)
 ax.legend(loc="upper right")
 
+tekst_vrijeme = ax.text(0.02, 0.02, "", transform=ax.transAxes)
+
 rep = 1000
 preskok = 1
 
-def init():
+frames = list(range(0, i_kraj + 1, preskok))
 
+if len(frames) == 0:
+    frames = [0]
+
+
+def init():
     for k in range(len(imena)):
-    
         linije[k].set_data([], [])
         tocke[k].set_data([], [])
-    
-    return linije + tocke
+
+    tekst_vrijeme.set_text("")
+    return linije + tocke + [tekst_vrijeme]
+
 
 def update(frame):
 
+    pocetak = max(0, frame - rep)
+
     for k in range(len(imena)):
 
-        pocetak = max(0, frame - rep)
-
-        x = M_mnp[pocetak:frame+1, k, 1]
-        y = M_mnp[pocetak:frame+1, k, 2]
+        x = M_mnp[pocetak:frame + 1, k, 1]
+        y = M_mnp[pocetak:frame + 1, k, 2]
 
         linije[k].set_data(x, y)
         tocke[k].set_data([M_mnp[frame, k, 1]], [M_mnp[frame, k, 2]])
 
-    return linije + tocke
+    try:
+        tekst_vrijeme.set_text("UTC: " + sp.et2utc(t_list[frame], "C", 0))
+    except Exception:
+        tekst_vrijeme.set_text(f"frame = {frame}")
+
+    return linije + tocke + [tekst_vrijeme]
+
 
 ani = FuncAnimation(fig,
                     update,
                     init_func=init,
-                    frames=range(1, i_kraj + 1, preskok),
-                    interval=1,
+                    frames=frames,
+                    interval=20,
                     blit=True,
                     repeat=False)
 
