@@ -3,7 +3,6 @@ from seminar_1 import *
 from seminar_2 import *
 from provjera_sudara import *
 
-### DEFINIRANJE MATRICE DIMENZIJE MxNxP ###
 m = N
 n = len(ID_valid_list) + 1
 p = 5 # ID, x, y, vx, vy

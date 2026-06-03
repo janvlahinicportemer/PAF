@@ -1,6 +1,5 @@
 from seminar_1 import *
 
-### UČITAVANJE KONSTANTNIH PODATAKA ###
 ID_list = [
     199,  # MERKUR
     299,  # VENERA

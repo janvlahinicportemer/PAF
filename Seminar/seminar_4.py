@@ -24,10 +24,8 @@ for i, ID in enumerate(ID_valid_list):
 
 M_planeti = M_mnp[0:i_kraj+1, 1:, :]
 
-L = max(
-    np.max(np.abs(M_planeti[:, :, 1])),
-    np.max(np.abs(M_planeti[:, :, 2]))
-) + 0.5*AU
+L = max(np.max(np.abs(M_planeti[:, :, 1])),
+        np.max(np.abs(M_planeti[:, :, 2]))) + 0.5*AU
 
 plt.xlim(-1.7*L, 1.7*L)
 plt.ylim(-L, L)
