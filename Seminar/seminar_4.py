@@ -22,14 +22,16 @@ for i, ID in enumerate(ID_valid_list):
     plt.plot(M_mnp[0:i_kraj+1, i+1, 1], M_mnp[0:i_kraj+1, i+1, 2], color=color)
     plt.scatter(M_mnp[i_kraj, i+1, 1], M_mnp[i_kraj, i+1, 2], s=size, label=f"{IME_rječnik[ID]}", color=color)
 
-x_min = np.min(M_mnp[0:i_kraj+1, :, 1]) - 1*AU
-x_max = np.max(M_mnp[0:i_kraj+1, :, 1]) + 1*AU
+M_planeti = M_mnp[0:i_kraj+1, 1:, :]
 
-y_min = np.min(M_mnp[0:i_kraj+1, :, 2]) - 1*AU
-y_max = np.max(M_mnp[0:i_kraj+1, :, 2]) + 1*AU
+L = max(
+    np.max(np.abs(M_planeti[:, :, 1])),
+    np.max(np.abs(M_planeti[:, :, 2]))
+) + 0.5*AU
 
-plt.xlim(x_min, x_max)
-plt.ylim(y_min, y_max)
+plt.xlim(-1.7*L, 1.7*L)
+plt.ylim(-L, L)
+plt.gca().set_aspect("equal", adjustable="box")
 
 plt.xlabel("x [km]")
 plt.ylabel("y [km]")
