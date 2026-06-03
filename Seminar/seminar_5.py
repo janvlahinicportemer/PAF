@@ -94,7 +94,7 @@ ani = FuncAnimation(fig,
                     interval=20,
                     blit=True,
                     repeat=False)
+                    
+ani.save("animacija.mp4", writer="ffmpeg", fps=30)
 
 plt.show()
-
-ani.save("animacija.mp4", writer="ffmpeg", fps=30)
