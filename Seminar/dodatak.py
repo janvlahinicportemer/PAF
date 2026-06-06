@@ -112,6 +112,9 @@ def akceleracija(t, r_komet):
 
         R = np.sqrt(dx**2 + dy**2)
 
+        if R < 1e-9:
+            continue
+
         GM = GM_rječnik[ID]
 
         ax_total += GM * dx / R**3
