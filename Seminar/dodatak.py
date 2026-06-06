@@ -112,9 +112,6 @@ def akceleracija(t, r_komet):
 
         R = np.sqrt(dx**2 + dy**2)
 
-        if R < 1e-9:
-            continue
-
         GM = GM_rječnik[ID]
 
         ax_total += GM * dx / R**3
@@ -129,20 +126,11 @@ def F(t, Y):
 
     a = akceleracija(t, r)
 
-    return np.array([
-        v[0],
-        v[1],
-        a[0],
-        a[1]])
-
+    return np.array([v[0], v[1], a[0], a[1]])
 
 def RK4(t_old, dt, r_old, v_old):
 
-    Y_old = np.array([
-        r_old[0],
-        r_old[1],
-        v_old[0],
-        v_old[1]])
+    Y_old = np.array([r_old[0], r_old[1], v_old[0], v_old[1]])
 
     k1 = F(t_old, Y_old)
     k2 = F(t_old + dt/2, Y_old + dt*k1/2)
